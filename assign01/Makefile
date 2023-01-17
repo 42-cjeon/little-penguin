@@ -1,4 +1,4 @@
-obj-m += mod.o
+obj-m += hello.o
 
 all:
 	$(MAKE) -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
