@@ -1,2 +1,6 @@
 # editor settings
 .vscode
+assign01/*
+!assign01/hello.c
+!assign01/Makefile
+!assign01/Kbuild
