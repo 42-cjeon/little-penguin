@@ -1,0 +1,711 @@
+Jan 20 22:54:17 rescue kernel: Linux version 6.1.0-thor_kernel-dirty (cjeon@rescue) (gcc (GCC) 12.2.1 20230111, GNU ld (GNU Binutils) 2.40) #1 SMP PREEMPT_DYNAMIC Fri Jan 20 21:58:30 KST 2023
+Jan 20 22:54:17 rescue kernel: Command line: root=/dev/sda2
+Jan 20 22:54:17 rescue kernel: x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
+Jan 20 22:54:17 rescue kernel: x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
+Jan 20 22:54:17 rescue kernel: x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers'
+Jan 20 22:54:17 rescue kernel: x86/fpu: xstate_offset[2]:  576, xstate_sizes[2]:  256
+Jan 20 22:54:17 rescue kernel: x86/fpu: Enabled xstate features 0x7, context size is 832 bytes, using 'standard' format.
+Jan 20 22:54:17 rescue kernel: signal: max sigframe size: 1776
+Jan 20 22:54:17 rescue kernel: BIOS-provided physical RAM map:
+Jan 20 22:54:17 rescue kernel: BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+Jan 20 22:54:17 rescue kernel: BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+Jan 20 22:54:17 rescue kernel: BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+Jan 20 22:54:17 rescue kernel: BIOS-e820: [mem 0x0000000000100000-0x000000007ffddfff] usable
+Jan 20 22:54:17 rescue kernel: BIOS-e820: [mem 0x000000007ffde000-0x000000007fffffff] reserved
+Jan 20 22:54:17 rescue kernel: BIOS-e820: [mem 0x00000000b0000000-0x00000000bfffffff] reserved
+Jan 20 22:54:17 rescue kernel: BIOS-e820: [mem 0x00000000fed1c000-0x00000000fed1ffff] reserved
+Jan 20 22:54:17 rescue kernel: BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+Jan 20 22:54:17 rescue kernel: BIOS-e820: [mem 0x0000000100000000-0x000000027fffffff] usable
+Jan 20 22:54:17 rescue kernel: random: crng init done
+Jan 20 22:54:17 rescue kernel: NX (Execute Disable) protection: active
+Jan 20 22:54:17 rescue kernel: e820: update [mem 0x00ba8660-0x00ba866f] usable ==> usable
+Jan 20 22:54:17 rescue kernel: e820: update [mem 0x00ba8660-0x00ba866f] usable ==> usable
+Jan 20 22:54:17 rescue kernel: extended physical RAM map:
+Jan 20 22:54:17 rescue kernel: reserve setup_data: [mem 0x0000000000000000-0x000000000009fbff] usable
+Jan 20 22:54:17 rescue kernel: reserve setup_data: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+Jan 20 22:54:17 rescue kernel: reserve setup_data: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+Jan 20 22:54:17 rescue kernel: reserve setup_data: [mem 0x0000000000100000-0x0000000000ba865f] usable
+Jan 20 22:54:17 rescue kernel: reserve setup_data: [mem 0x0000000000ba8660-0x0000000000ba866f] usable
+Jan 20 22:54:17 rescue kernel: reserve setup_data: [mem 0x0000000000ba8670-0x000000007ffddfff] usable
+Jan 20 22:54:17 rescue kernel: reserve setup_data: [mem 0x000000007ffde000-0x000000007fffffff] reserved
+Jan 20 22:54:17 rescue kernel: reserve setup_data: [mem 0x00000000b0000000-0x00000000bfffffff] reserved
+Jan 20 22:54:17 rescue kernel: reserve setup_data: [mem 0x00000000fed1c000-0x00000000fed1ffff] reserved
+Jan 20 22:54:17 rescue kernel: reserve setup_data: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+Jan 20 22:54:17 rescue kernel: reserve setup_data: [mem 0x0000000100000000-0x000000027fffffff] usable
+Jan 20 22:54:17 rescue kernel: SMBIOS 2.8 present.
+Jan 20 22:54:17 rescue kernel: DMI: QEMU Standard PC (Q35 + ICH9, 2009), BIOS rel-1.16.1-0-g3208b098f51a-prebuilt.qemu.org 04/01/2014
+Jan 20 22:54:17 rescue kernel: e820: update [mem 0x00000000-0x00000fff] usable ==> reserved
+Jan 20 22:54:17 rescue kernel: e820: remove [mem 0x000a0000-0x000fffff] usable
+Jan 20 22:54:17 rescue kernel: last_pfn = 0x280000 max_arch_pfn = 0x400000000
+Jan 20 22:54:17 rescue kernel: Disabled
+Jan 20 22:54:17 rescue kernel: x86/PAT: MTRRs disabled, skipping PAT initialization too.
+Jan 20 22:54:17 rescue kernel: CPU MTRRs all blank - virtualized system.
+Jan 20 22:54:17 rescue kernel: x86/PAT: Configuration [0-7]: WB  WT  UC- UC  WB  WT  UC- UC  
+Jan 20 22:54:17 rescue kernel: last_pfn = 0x7ffde max_arch_pfn = 0x400000000
+Jan 20 22:54:17 rescue kernel: found SMP MP-table at [mem 0x000f5be0-0x000f5bef]
+Jan 20 22:54:17 rescue kernel: Using GB pages for direct mapping
+Jan 20 22:54:17 rescue kernel: RAMDISK: [mem 0x7f7eb000-0x7ffcffff]
+Jan 20 22:54:17 rescue kernel: ACPI: Early table checksum verification disabled
+Jan 20 22:54:17 rescue kernel: ACPI: RSDP 0x00000000000F59F0 000014 (v00 BOCHS )
+Jan 20 22:54:17 rescue kernel: ACPI: RSDT 0x000000007FFE24B4 000038 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Jan 20 22:54:17 rescue kernel: ACPI: FACP 0x000000007FFE2284 0000F4 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+Jan 20 22:54:17 rescue kernel: ACPI: DSDT 0x000000007FFE0040 002244 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Jan 20 22:54:17 rescue kernel: ACPI: FACS 0x000000007FFE0000 000040
+Jan 20 22:54:17 rescue kernel: ACPI: APIC 0x000000007FFE2378 0000A0 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Jan 20 22:54:17 rescue kernel: ACPI: HPET 0x000000007FFE2418 000038 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Jan 20 22:54:17 rescue kernel: ACPI: MCFG 0x000000007FFE2450 00003C (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Jan 20 22:54:17 rescue kernel: ACPI: WAET 0x000000007FFE248C 000028 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Jan 20 22:54:17 rescue kernel: ACPI: Reserving FACP table memory at [mem 0x7ffe2284-0x7ffe2377]
+Jan 20 22:54:17 rescue kernel: ACPI: Reserving DSDT table memory at [mem 0x7ffe0040-0x7ffe2283]
+Jan 20 22:54:17 rescue kernel: ACPI: Reserving FACS table memory at [mem 0x7ffe0000-0x7ffe003f]
+Jan 20 22:54:17 rescue kernel: ACPI: Reserving APIC table memory at [mem 0x7ffe2378-0x7ffe2417]
+Jan 20 22:54:17 rescue kernel: ACPI: Reserving HPET table memory at [mem 0x7ffe2418-0x7ffe244f]
+Jan 20 22:54:17 rescue kernel: ACPI: Reserving MCFG table memory at [mem 0x7ffe2450-0x7ffe248b]
+Jan 20 22:54:17 rescue kernel: ACPI: Reserving WAET table memory at [mem 0x7ffe248c-0x7ffe24b3]
+Jan 20 22:54:17 rescue kernel: No NUMA configuration found
+Jan 20 22:54:17 rescue kernel: Faking a node at [mem 0x0000000000000000-0x000000027fffffff]
+Jan 20 22:54:17 rescue kernel: NODE_DATA(0) allocated [mem 0x27fffc000-0x27fffffff]
+Jan 20 22:54:17 rescue kernel: Zone ranges:
+Jan 20 22:54:17 rescue kernel:   DMA      [mem 0x0000000000001000-0x0000000000ffffff]
+Jan 20 22:54:17 rescue kernel:   DMA32    [mem 0x0000000001000000-0x00000000ffffffff]
+Jan 20 22:54:17 rescue kernel:   Normal   [mem 0x0000000100000000-0x000000027fffffff]
+Jan 20 22:54:17 rescue kernel: Movable zone start for each node
+Jan 20 22:54:17 rescue kernel: Early memory node ranges
+Jan 20 22:54:17 rescue kernel:   node   0: [mem 0x0000000000001000-0x000000000009efff]
+Jan 20 22:54:17 rescue kernel:   node   0: [mem 0x0000000000100000-0x000000007ffddfff]
+Jan 20 22:54:17 rescue kernel:   node   0: [mem 0x0000000100000000-0x000000027fffffff]
+Jan 20 22:54:17 rescue kernel: Initmem setup node 0 [mem 0x0000000000001000-0x000000027fffffff]
+Jan 20 22:54:17 rescue kernel: On node 0, zone DMA: 1 pages in unavailable ranges
+Jan 20 22:54:17 rescue kernel: On node 0, zone DMA: 97 pages in unavailable ranges
+Jan 20 22:54:17 rescue kernel: On node 0, zone Normal: 34 pages in unavailable ranges
+Jan 20 22:54:17 rescue kernel: ACPI: PM-Timer IO Port: 0x608
+Jan 20 22:54:17 rescue kernel: ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+Jan 20 22:54:17 rescue kernel: IOAPIC[0]: apic_id 0, version 32, address 0xfec00000, GSI 0-23
+Jan 20 22:54:17 rescue kernel: ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+Jan 20 22:54:17 rescue kernel: ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+Jan 20 22:54:17 rescue kernel: ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+Jan 20 22:54:17 rescue kernel: ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+Jan 20 22:54:17 rescue kernel: ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+Jan 20 22:54:17 rescue kernel: ACPI: Using ACPI (MADT) for SMP configuration information
+Jan 20 22:54:17 rescue kernel: ACPI: HPET id: 0x8086a201 base: 0xfed00000
+Jan 20 22:54:17 rescue kernel: smpboot: Allowing 6 CPUs, 0 hotplug CPUs
+Jan 20 22:54:17 rescue kernel: PM: hibernation: Registered nosave memory: [mem 0x00000000-0x00000fff]
+Jan 20 22:54:17 rescue kernel: PM: hibernation: Registered nosave memory: [mem 0x0009f000-0x0009ffff]
+Jan 20 22:54:17 rescue kernel: PM: hibernation: Registered nosave memory: [mem 0x000a0000-0x000effff]
+Jan 20 22:54:17 rescue kernel: PM: hibernation: Registered nosave memory: [mem 0x000f0000-0x000fffff]
+Jan 20 22:54:17 rescue kernel: PM: hibernation: Registered nosave memory: [mem 0x00ba8000-0x00ba8fff]
+Jan 20 22:54:17 rescue kernel: PM: hibernation: Registered nosave memory: [mem 0x00ba8000-0x00ba8fff]
+Jan 20 22:54:17 rescue kernel: PM: hibernation: Registered nosave memory: [mem 0x7ffde000-0x7fffffff]
+Jan 20 22:54:17 rescue kernel: PM: hibernation: Registered nosave memory: [mem 0x80000000-0xafffffff]
+Jan 20 22:54:17 rescue kernel: PM: hibernation: Registered nosave memory: [mem 0xb0000000-0xbfffffff]
+Jan 20 22:54:17 rescue kernel: PM: hibernation: Registered nosave memory: [mem 0xc0000000-0xfed1bfff]
+Jan 20 22:54:17 rescue kernel: PM: hibernation: Registered nosave memory: [mem 0xfed1c000-0xfed1ffff]
+Jan 20 22:54:17 rescue kernel: PM: hibernation: Registered nosave memory: [mem 0xfed20000-0xfffbffff]
+Jan 20 22:54:17 rescue kernel: PM: hibernation: Registered nosave memory: [mem 0xfffc0000-0xffffffff]
+Jan 20 22:54:17 rescue kernel: [mem 0xc0000000-0xfed1bfff] available for PCI devices
+Jan 20 22:54:17 rescue kernel: Booting paravirtualized kernel on bare hardware
+Jan 20 22:54:17 rescue kernel: clocksource: refined-jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1910969940391419 ns
+Jan 20 22:54:17 rescue kernel: setup_percpu: NR_CPUS:64 nr_cpumask_bits:6 nr_cpu_ids:6 nr_node_ids:1
+Jan 20 22:54:17 rescue kernel: percpu: Embedded 53 pages/cpu s176296 r8192 d32600 u262144
+Jan 20 22:54:17 rescue kernel: pcpu-alloc: s176296 r8192 d32600 u262144 alloc=1*2097152
+Jan 20 22:54:17 rescue kernel: pcpu-alloc: [0] 0 1 2 3 4 5 - - 
+Jan 20 22:54:17 rescue kernel: Fallback order for Node 0: 0 
+Jan 20 22:54:17 rescue kernel: Built 1 zonelists, mobility grouping on.  Total pages: 2064093
+Jan 20 22:54:17 rescue kernel: Policy zone: Normal
+Jan 20 22:54:17 rescue kernel: Kernel command line: root=/dev/sda2
+Jan 20 22:54:17 rescue kernel: Dentry cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
+Jan 20 22:54:17 rescue kernel: Inode-cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
+Jan 20 22:54:17 rescue kernel: mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+Jan 20 22:54:17 rescue kernel: software IO TLB: area num 8.
+Jan 20 22:54:17 rescue kernel: Memory: 8133212K/8388080K available (16396K kernel code, 2676K rwdata, 4784K rodata, 1520K init, 916K bss, 254608K reserved, 0K cma-reserved)
+Jan 20 22:54:17 rescue kernel: SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=6, Nodes=1
+Jan 20 22:54:17 rescue kernel: Kernel/User page tables isolation: enabled
+Jan 20 22:54:17 rescue kernel: Dynamic Preempt: voluntary
+Jan 20 22:54:17 rescue kernel: rcu: Preemptible hierarchical RCU implementation.
+Jan 20 22:54:17 rescue kernel: rcu:         RCU event tracing is enabled.
+Jan 20 22:54:17 rescue kernel: rcu:         RCU restricting CPUs from NR_CPUS=64 to nr_cpu_ids=6.
+Jan 20 22:54:17 rescue kernel:         Trampoline variant of Tasks RCU enabled.
+Jan 20 22:54:17 rescue kernel: rcu: RCU calculated value of scheduler-enlistment delay is 100 jiffies.
+Jan 20 22:54:17 rescue kernel: rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=6
+Jan 20 22:54:17 rescue kernel: NR_IRQS: 4352, nr_irqs: 472, preallocated irqs: 16
+Jan 20 22:54:17 rescue kernel: rcu: srcu_init: Setting srcu_struct sizes based on contention.
+Jan 20 22:54:17 rescue kernel: Console: colour VGA+ 80x25
+Jan 20 22:54:17 rescue kernel: printk: console [tty0] enabled
+Jan 20 22:54:17 rescue kernel: ACPI: Core revision 20220331
+Jan 20 22:54:17 rescue kernel: clocksource: hpet: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604467 ns
+Jan 20 22:54:17 rescue kernel: APIC: Switch to symmetric I/O mode setup
+Jan 20 22:54:17 rescue kernel: ..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+Jan 20 22:54:17 rescue kernel: tsc: PIT calibration matches HPET. 1 loops
+Jan 20 22:54:17 rescue kernel: tsc: Detected 3095.794 MHz processor
+Jan 20 22:54:17 rescue kernel: clocksource: tsc-early: mask: 0xffffffffffffffff max_cycles: 0x2c9fc26e4b3, max_idle_ns: 440795264699 ns
+Jan 20 22:54:17 rescue kernel: Calibrating delay loop (skipped), value calculated using timer frequency.. 6191.58 BogoMIPS (lpj=3095794)
+Jan 20 22:54:17 rescue kernel: pid_max: default: 32768 minimum: 301
+Jan 20 22:54:17 rescue kernel: LSM: Security Framework initializing
+Jan 20 22:54:17 rescue kernel: SELinux:  Initializing.
+Jan 20 22:54:17 rescue kernel: Mount-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+Jan 20 22:54:17 rescue kernel: Mountpoint-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+Jan 20 22:54:17 rescue kernel: Last level iTLB entries: 4KB 0, 2MB 0, 4MB 0
+Jan 20 22:54:17 rescue kernel: Last level dTLB entries: 4KB 0, 2MB 0, 4MB 0, 1GB 0
+Jan 20 22:54:17 rescue kernel: Spectre V1 : Mitigation: usercopy/swapgs barriers and __user pointer sanitization
+Jan 20 22:54:17 rescue kernel: Spectre V2 : Mitigation: Retpolines
+Jan 20 22:54:17 rescue kernel: Spectre V2 : Spectre v2 / SpectreRSB mitigation: Filling RSB on context switch
+Jan 20 22:54:17 rescue kernel: Spectre V2 : Spectre v2 / SpectreRSB : Filling RSB on VMEXIT
+Jan 20 22:54:17 rescue kernel: RETBleed: WARNING: Spectre v2 mitigation leaves CPU vulnerable to RETBleed attacks, data leaks possible!
+Jan 20 22:54:17 rescue kernel: RETBleed: Vulnerable
+Jan 20 22:54:17 rescue kernel: Speculative Store Bypass: Vulnerable
+Jan 20 22:54:17 rescue kernel: MDS: Vulnerable: Clear CPU buffers attempted, no microcode
+Jan 20 22:54:17 rescue kernel: TAA: Vulnerable: Clear CPU buffers attempted, no microcode
+Jan 20 22:54:17 rescue kernel: MMIO Stale Data: Vulnerable: Clear CPU buffers attempted, no microcode
+Jan 20 22:54:17 rescue kernel: SRBDS: Unknown: Dependent on hypervisor status
+Jan 20 22:54:17 rescue kernel: Freeing SMP alternatives memory: 44K
+Jan 20 22:54:17 rescue kernel: smpboot: CPU0: Intel 06/9e (family: 0x6, model: 0x9e, stepping: 0xa)
+Jan 20 22:54:17 rescue kernel: cblist_init_generic: Setting adjustable number of callback queues.
+Jan 20 22:54:17 rescue kernel: cblist_init_generic: Setting shift to 3 and lim to 1.
+Jan 20 22:54:17 rescue kernel: Performance Events: unsupported p6 CPU model 158 no PMU driver, software events only.
+Jan 20 22:54:17 rescue kernel: rcu: Hierarchical SRCU implementation.
+Jan 20 22:54:17 rescue kernel: rcu:         Max phase no-delay instances is 400.
+Jan 20 22:54:17 rescue kernel: smp: Bringing up secondary CPUs ...
+Jan 20 22:54:17 rescue kernel: x86: Booting SMP configuration:
+Jan 20 22:54:17 rescue kernel: .... node  #0, CPUs:      #1
+Jan 20 22:54:17 rescue kernel: MDS CPU bug present and SMT on, data leak possible. See https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/mds.html for more details.
+Jan 20 22:54:17 rescue kernel: TAA CPU bug present and SMT on, data leak possible. See https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/tsx_async_abort.html for more details.
+Jan 20 22:54:17 rescue kernel: MMIO Stale Data CPU bug present and SMT on, data leak possible. See https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/processor_mmio_stale_data.html for more details.
+Jan 20 22:54:17 rescue kernel:  #2 #3 #4 #5
+Jan 20 22:54:17 rescue kernel: smp: Brought up 1 node, 6 CPUs
+Jan 20 22:54:17 rescue kernel: smpboot: Max logical packages: 1
+Jan 20 22:54:17 rescue kernel: smpboot: Total of 6 processors activated (37149.52 BogoMIPS)
+Jan 20 22:54:17 rescue kernel: devtmpfs: initialized
+Jan 20 22:54:17 rescue kernel: clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
+Jan 20 22:54:17 rescue kernel: futex hash table entries: 2048 (order: 5, 131072 bytes, linear)
+Jan 20 22:54:17 rescue kernel: PM: RTC time: 13:54:17, date: 2023-01-20
+Jan 20 22:54:17 rescue kernel: NET: Registered PF_NETLINK/PF_ROUTE protocol family
+Jan 20 22:54:17 rescue kernel: audit: initializing netlink subsys (disabled)
+Jan 20 22:54:17 rescue kernel: audit: type=2000 audit(1674222856.151:1): state=initialized audit_enabled=0 res=1
+Jan 20 22:54:17 rescue kernel: thermal_sys: Registered thermal governor 'step_wise'
+Jan 20 22:54:17 rescue kernel: thermal_sys: Registered thermal governor 'user_space'
+Jan 20 22:54:17 rescue kernel: cpuidle: using governor menu
+Jan 20 22:54:17 rescue kernel: PCI: MMCONFIG for domain 0000 [bus 00-ff] at [mem 0xb0000000-0xbfffffff] (base 0xb0000000)
+Jan 20 22:54:17 rescue kernel: PCI: MMCONFIG at [mem 0xb0000000-0xbfffffff] reserved in E820
+Jan 20 22:54:17 rescue kernel: PCI: Using configuration type 1 for base access
+Jan 20 22:54:17 rescue kernel: kprobes: kprobe jump-optimization is enabled. All kprobes are optimized if possible.
+Jan 20 22:54:17 rescue kernel: HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+Jan 20 22:54:17 rescue kernel: HugeTLB: 28 KiB vmemmap can be freed for a 2.00 MiB page
+Jan 20 22:54:17 rescue kernel: ACPI: Added _OSI(Module Device)
+Jan 20 22:54:17 rescue kernel: ACPI: Added _OSI(Processor Device)
+Jan 20 22:54:17 rescue kernel: ACPI: Added _OSI(3.0 _SCP Extensions)
+Jan 20 22:54:17 rescue kernel: ACPI: Added _OSI(Processor Aggregator Device)
+Jan 20 22:54:17 rescue kernel: ACPI: 1 ACPI AML tables successfully acquired and loaded
+Jan 20 22:54:17 rescue kernel: ACPI: Interpreter enabled
+Jan 20 22:54:17 rescue kernel: ACPI: PM: (supports S0 S3 S4 S5)
+Jan 20 22:54:17 rescue kernel: ACPI: Using IOAPIC for interrupt routing
+Jan 20 22:54:17 rescue kernel: PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+Jan 20 22:54:17 rescue kernel: PCI: Using E820 reservations for host bridge windows
+Jan 20 22:54:17 rescue kernel: ACPI: Enabled 2 GPEs in block 00 to 3F
+Jan 20 22:54:17 rescue kernel: ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+Jan 20 22:54:17 rescue kernel: acpi PNP0A08:00: _OSC: OS supports [ExtendedConfig ASPM ClockPM Segments MSI HPX-Type3]
+Jan 20 22:54:17 rescue kernel: acpi PNP0A08:00: _OSC: platform does not support [LTR]
+Jan 20 22:54:17 rescue kernel: acpi PNP0A08:00: _OSC: OS now controls [PME PCIeCapability]
+Jan 20 22:54:17 rescue kernel: PCI host bridge to bus 0000:00
+Jan 20 22:54:17 rescue kernel: pci_bus 0000:00: root bus resource [io  0x0000-0x0cf7 window]
+Jan 20 22:54:17 rescue kernel: pci_bus 0000:00: root bus resource [io  0x0d00-0xffff window]
+Jan 20 22:54:17 rescue kernel: pci_bus 0000:00: root bus resource [mem 0x000a0000-0x000bffff window]
+Jan 20 22:54:17 rescue kernel: pci_bus 0000:00: root bus resource [mem 0x80000000-0xafffffff window]
+Jan 20 22:54:17 rescue kernel: pci_bus 0000:00: root bus resource [mem 0xc0000000-0xfebfffff window]
+Jan 20 22:54:17 rescue kernel: pci_bus 0000:00: root bus resource [mem 0x280000000-0xa7fffffff window]
+Jan 20 22:54:17 rescue kernel: pci_bus 0000:00: root bus resource [bus 00-ff]
+Jan 20 22:54:17 rescue kernel: pci 0000:00:00.0: [8086:29c0] type 00 class 0x060000
+Jan 20 22:54:17 rescue kernel: pci 0000:00:01.0: [1234:1111] type 00 class 0x030000
+Jan 20 22:54:17 rescue kernel: pci 0000:00:01.0: reg 0x10: [mem 0xfd000000-0xfdffffff pref]
+Jan 20 22:54:17 rescue kernel: pci 0000:00:01.0: reg 0x18: [mem 0xfebf0000-0xfebf0fff]
+Jan 20 22:54:17 rescue kernel: pci 0000:00:01.0: reg 0x30: [mem 0xfebe0000-0xfebeffff pref]
+Jan 20 22:54:17 rescue kernel: pci 0000:00:01.0: Video device with shadowed ROM at [mem 0x000c0000-0x000dffff]
+Jan 20 22:54:17 rescue kernel: pci 0000:00:02.0: [8086:100e] type 00 class 0x020000
+Jan 20 22:54:17 rescue kernel: pci 0000:00:02.0: reg 0x10: [mem 0xfebc0000-0xfebdffff]
+Jan 20 22:54:17 rescue kernel: pci 0000:00:02.0: reg 0x14: [io  0xc000-0xc03f]
+Jan 20 22:54:17 rescue kernel: pci 0000:00:02.0: reg 0x30: [mem 0xfeb80000-0xfebbffff pref]
+Jan 20 22:54:17 rescue kernel: pci 0000:00:1d.0: [8086:2934] type 00 class 0x0c0300
+Jan 20 22:54:17 rescue kernel: pci 0000:00:1d.0: reg 0x20: [io  0xc080-0xc09f]
+Jan 20 22:54:17 rescue kernel: pci 0000:00:1d.1: [8086:2935] type 00 class 0x0c0300
+Jan 20 22:54:17 rescue kernel: pci 0000:00:1d.1: reg 0x20: [io  0xc0a0-0xc0bf]
+Jan 20 22:54:17 rescue kernel: pci 0000:00:1d.2: [8086:2936] type 00 class 0x0c0300
+Jan 20 22:54:17 rescue kernel: pci 0000:00:1d.2: reg 0x20: [io  0xc0c0-0xc0df]
+Jan 20 22:54:17 rescue kernel: pci 0000:00:1d.7: [8086:293a] type 00 class 0x0c0320
+Jan 20 22:54:17 rescue kernel: pci 0000:00:1d.7: reg 0x10: [mem 0xfebf1000-0xfebf1fff]
+Jan 20 22:54:17 rescue kernel: pci 0000:00:1f.0: [8086:2918] type 00 class 0x060100
+Jan 20 22:54:17 rescue kernel: pci 0000:00:1f.0: quirk: [io  0x0600-0x067f] claimed by ICH6 ACPI/GPIO/TCO
+Jan 20 22:54:17 rescue kernel: pci 0000:00:1f.2: [8086:2922] type 00 class 0x010601
+Jan 20 22:54:17 rescue kernel: pci 0000:00:1f.2: reg 0x20: [io  0xc0e0-0xc0ff]
+Jan 20 22:54:17 rescue kernel: pci 0000:00:1f.2: reg 0x24: [mem 0xfebf2000-0xfebf2fff]
+Jan 20 22:54:17 rescue kernel: pci 0000:00:1f.3: [8086:2930] type 00 class 0x0c0500
+Jan 20 22:54:17 rescue kernel: pci 0000:00:1f.3: reg 0x20: [io  0x0700-0x073f]
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link LNKA configured for IRQ 10
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link LNKB configured for IRQ 10
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link LNKC configured for IRQ 11
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link LNKD configured for IRQ 11
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link LNKE configured for IRQ 10
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link LNKF configured for IRQ 10
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link LNKG configured for IRQ 11
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link LNKH configured for IRQ 11
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link GSIA configured for IRQ 16
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link GSIB configured for IRQ 17
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link GSIC configured for IRQ 18
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link GSID configured for IRQ 19
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link GSIE configured for IRQ 20
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link GSIF configured for IRQ 21
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link GSIG configured for IRQ 22
+Jan 20 22:54:17 rescue kernel: ACPI: PCI: Interrupt link GSIH configured for IRQ 23
+Jan 20 22:54:17 rescue kernel: iommu: Default domain type: Translated 
+Jan 20 22:54:17 rescue kernel: iommu: DMA domain TLB invalidation policy: lazy mode 
+Jan 20 22:54:17 rescue kernel: SCSI subsystem initialized
+Jan 20 22:54:17 rescue kernel: libata version 3.00 loaded.
+Jan 20 22:54:17 rescue kernel: ACPI: bus type USB registered
+Jan 20 22:54:17 rescue kernel: usbcore: registered new interface driver usbfs
+Jan 20 22:54:17 rescue kernel: usbcore: registered new interface driver hub
+Jan 20 22:54:17 rescue kernel: usbcore: registered new device driver usb
+Jan 20 22:54:17 rescue kernel: pps_core: LinuxPPS API ver. 1 registered
+Jan 20 22:54:17 rescue kernel: pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+Jan 20 22:54:17 rescue kernel: PTP clock support registered
+Jan 20 22:54:17 rescue kernel: Advanced Linux Sound Architecture Driver Initialized.
+Jan 20 22:54:17 rescue kernel: NetLabel: Initializing
+Jan 20 22:54:17 rescue kernel: NetLabel:  domain hash size = 128
+Jan 20 22:54:17 rescue kernel: NetLabel:  protocols = UNLABELED CIPSOv4 CALIPSO
+Jan 20 22:54:17 rescue kernel: NetLabel:  unlabeled traffic allowed by default
+Jan 20 22:54:17 rescue kernel: PCI: Using ACPI for IRQ routing
+Jan 20 22:54:17 rescue kernel: PCI: pci_cache_line_size set to 64 bytes
+Jan 20 22:54:17 rescue kernel: e820: reserve RAM buffer [mem 0x0009fc00-0x0009ffff]
+Jan 20 22:54:17 rescue kernel: e820: reserve RAM buffer [mem 0x00ba8660-0x00bfffff]
+Jan 20 22:54:17 rescue kernel: e820: reserve RAM buffer [mem 0x7ffde000-0x7fffffff]
+Jan 20 22:54:17 rescue kernel: pci 0000:00:01.0: vgaarb: setting as boot VGA device
+Jan 20 22:54:17 rescue kernel: pci 0000:00:01.0: vgaarb: bridge control possible
+Jan 20 22:54:17 rescue kernel: pci 0000:00:01.0: vgaarb: VGA device added: decodes=io+mem,owns=io+mem,locks=none
+Jan 20 22:54:17 rescue kernel: vgaarb: loaded
+Jan 20 22:54:17 rescue kernel: hpet0: at MMIO 0xfed00000, IRQs 2, 8, 0
+Jan 20 22:54:17 rescue kernel: hpet0: 3 comparators, 64-bit 100.000000 MHz counter
+Jan 20 22:54:17 rescue kernel: clocksource: Switched to clocksource tsc-early
+Jan 20 22:54:17 rescue kernel: VFS: Disk quotas dquot_6.6.0
+Jan 20 22:54:17 rescue kernel: VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+Jan 20 22:54:17 rescue kernel: pnp: PnP ACPI init
+Jan 20 22:54:17 rescue kernel: system 00:05: [mem 0xb0000000-0xbfffffff window] has been reserved
+Jan 20 22:54:17 rescue kernel: pnp: PnP ACPI: found 6 devices
+Jan 20 22:54:17 rescue kernel: clocksource: acpi_pm: mask: 0xffffff max_cycles: 0xffffff, max_idle_ns: 2085701024 ns
+Jan 20 22:54:17 rescue kernel: NET: Registered PF_INET protocol family
+Jan 20 22:54:17 rescue kernel: IP idents hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+Jan 20 22:54:17 rescue kernel: tcp_listen_portaddr_hash hash table entries: 4096 (order: 4, 65536 bytes, linear)
+Jan 20 22:54:17 rescue kernel: Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+Jan 20 22:54:17 rescue kernel: TCP established hash table entries: 65536 (order: 7, 524288 bytes, linear)
+Jan 20 22:54:17 rescue kernel: TCP bind hash table entries: 65536 (order: 9, 2097152 bytes, linear)
+Jan 20 22:54:17 rescue kernel: TCP: Hash tables configured (established 65536 bind 65536)
+Jan 20 22:54:17 rescue kernel: UDP hash table entries: 4096 (order: 5, 131072 bytes, linear)
+Jan 20 22:54:17 rescue kernel: UDP-Lite hash table entries: 4096 (order: 5, 131072 bytes, linear)
+Jan 20 22:54:17 rescue kernel: NET: Registered PF_UNIX/PF_LOCAL protocol family
+Jan 20 22:54:17 rescue kernel: RPC: Registered named UNIX socket transport module.
+Jan 20 22:54:17 rescue kernel: RPC: Registered udp transport module.
+Jan 20 22:54:17 rescue kernel: RPC: Registered tcp transport module.
+Jan 20 22:54:17 rescue kernel: RPC: Registered tcp NFSv4.1 backchannel transport module.
+Jan 20 22:54:17 rescue kernel: pci_bus 0000:00: resource 4 [io  0x0000-0x0cf7 window]
+Jan 20 22:54:17 rescue kernel: pci_bus 0000:00: resource 5 [io  0x0d00-0xffff window]
+Jan 20 22:54:17 rescue kernel: pci_bus 0000:00: resource 6 [mem 0x000a0000-0x000bffff window]
+Jan 20 22:54:17 rescue kernel: pci_bus 0000:00: resource 7 [mem 0x80000000-0xafffffff window]
+Jan 20 22:54:17 rescue kernel: pci_bus 0000:00: resource 8 [mem 0xc0000000-0xfebfffff window]
+Jan 20 22:54:17 rescue kernel: pci_bus 0000:00: resource 9 [mem 0x280000000-0xa7fffffff window]
+Jan 20 22:54:17 rescue kernel: ACPI: \_SB_.GSIA: Enabled at IRQ 16
+Jan 20 22:54:17 rescue kernel: ACPI: \_SB_.GSIB: Enabled at IRQ 17
+Jan 20 22:54:17 rescue kernel: ACPI: \_SB_.GSIC: Enabled at IRQ 18
+Jan 20 22:54:17 rescue kernel: ACPI: \_SB_.GSID: Enabled at IRQ 19
+Jan 20 22:54:17 rescue kernel: PCI: CLS 0 bytes, default 64
+Jan 20 22:54:17 rescue kernel: PCI-DMA: Using software bounce buffering for IO (SWIOTLB)
+Jan 20 22:54:17 rescue kernel: Unpacking initramfs...
+Jan 20 22:54:17 rescue kernel: software IO TLB: mapped [mem 0x000000007b7eb000-0x000000007f7eb000] (64MB)
+Jan 20 22:54:17 rescue kernel: RAPL PMU: API unit is 2^-32 Joules, 0 fixed counters, 10737418240 ms ovfl timer
+Jan 20 22:54:17 rescue kernel: Initialise system trusted keyrings
+Jan 20 22:54:17 rescue kernel: workingset: timestamp_bits=56 max_order=21 bucket_order=0
+Jan 20 22:54:17 rescue kernel: NFS: Registering the id_resolver key type
+Jan 20 22:54:17 rescue kernel: Key type id_resolver registered
+Jan 20 22:54:17 rescue kernel: Key type id_legacy registered
+Jan 20 22:54:17 rescue kernel: 9p: Installing v9fs 9p2000 file system support
+Jan 20 22:54:17 rescue kernel: Key type asymmetric registered
+Jan 20 22:54:17 rescue kernel: Asymmetric key parser 'x509' registered
+Jan 20 22:54:17 rescue kernel: Block layer SCSI generic (bsg) driver version 0.4 loaded (major 251)
+Jan 20 22:54:17 rescue kernel: io scheduler mq-deadline registered
+Jan 20 22:54:17 rescue kernel: io scheduler kyber registered
+Jan 20 22:54:17 rescue kernel: input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+Jan 20 22:54:17 rescue kernel: ACPI: button: Power Button [PWRF]
+Jan 20 22:54:17 rescue kernel: Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+Jan 20 22:54:17 rescue kernel: 00:03: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A
+Jan 20 22:54:17 rescue kernel: Non-volatile memory driver v1.3
+Jan 20 22:54:17 rescue kernel: Linux agpgart interface v0.103
+Jan 20 22:54:17 rescue kernel: ACPI: bus type drm_connector registered
+Jan 20 22:54:17 rescue kernel: loop: module loaded
+Jan 20 22:54:17 rescue kernel: ahci 0000:00:1f.2: version 3.0
+Jan 20 22:54:17 rescue kernel: ahci 0000:00:1f.2: AHCI 0001.0000 32 slots 6 ports 1.5 Gbps 0x3f impl SATA mode
+Jan 20 22:54:17 rescue kernel: ahci 0000:00:1f.2: flags: 64bit ncq only 
+Jan 20 22:54:17 rescue kernel: scsi host0: ahci
+Jan 20 22:54:17 rescue kernel: scsi host1: ahci
+Jan 20 22:54:17 rescue kernel: scsi host2: ahci
+Jan 20 22:54:17 rescue kernel: scsi host3: ahci
+Jan 20 22:54:17 rescue kernel: scsi host4: ahci
+Jan 20 22:54:17 rescue kernel: scsi host5: ahci
+Jan 20 22:54:17 rescue kernel: ata1: SATA max UDMA/133 abar m4096@0xfebf2000 port 0xfebf2100 irq 24
+Jan 20 22:54:17 rescue kernel: ata2: SATA max UDMA/133 abar m4096@0xfebf2000 port 0xfebf2180 irq 24
+Jan 20 22:54:17 rescue kernel: ata3: SATA max UDMA/133 abar m4096@0xfebf2000 port 0xfebf2200 irq 24
+Jan 20 22:54:17 rescue kernel: ata4: SATA max UDMA/133 abar m4096@0xfebf2000 port 0xfebf2280 irq 24
+Jan 20 22:54:17 rescue kernel: ata5: SATA max UDMA/133 abar m4096@0xfebf2000 port 0xfebf2300 irq 24
+Jan 20 22:54:17 rescue kernel: ata6: SATA max UDMA/133 abar m4096@0xfebf2000 port 0xfebf2380 irq 24
+Jan 20 22:54:17 rescue kernel: e100: Intel(R) PRO/100 Network Driver
+Jan 20 22:54:17 rescue kernel: e100: Copyright(c) 1999-2006 Intel Corporation
+Jan 20 22:54:17 rescue kernel: e1000: Intel(R) PRO/1000 Network Driver
+Jan 20 22:54:17 rescue kernel: e1000: Copyright (c) 1999-2006 Intel Corporation.
+Jan 20 22:54:17 rescue kernel: ACPI: \_SB_.GSIG: Enabled at IRQ 22
+Jan 20 22:54:17 rescue kernel: Freeing initrd memory: 8084K
+Jan 20 22:54:17 rescue kernel: ata1: SATA link up 1.5 Gbps (SStatus 113 SControl 300)
+Jan 20 22:54:17 rescue kernel: ata1.00: ATA-7: QEMU HARDDISK, 2.5+, max UDMA/100
+Jan 20 22:54:17 rescue kernel: ata1.00: 62914560 sectors, multi 16: LBA48 NCQ (depth 32)
+Jan 20 22:54:17 rescue kernel: ata1.00: applying bridge limits
+Jan 20 22:54:17 rescue kernel: ata2: SATA link down (SStatus 0 SControl 300)
+Jan 20 22:54:17 rescue kernel: ata1.00: configured for UDMA/100
+Jan 20 22:54:17 rescue kernel: scsi 0:0:0:0: Direct-Access     ATA      QEMU HARDDISK    2.5+ PQ: 0 ANSI: 5
+Jan 20 22:54:17 rescue kernel: ata3: SATA link up 1.5 Gbps (SStatus 113 SControl 300)
+Jan 20 22:54:17 rescue kernel: sd 0:0:0:0: Attached scsi generic sg0 type 0
+Jan 20 22:54:17 rescue kernel: sd 0:0:0:0: [sda] 62914560 512-byte logical blocks: (32.2 GB/30.0 GiB)
+Jan 20 22:54:17 rescue kernel: sd 0:0:0:0: [sda] Write Protect is off
+Jan 20 22:54:17 rescue kernel: sd 0:0:0:0: [sda] Mode Sense: 00 3a 00 00
+Jan 20 22:54:17 rescue kernel: sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+Jan 20 22:54:17 rescue kernel: sd 0:0:0:0: [sda] Preferred minimum I/O size 512 bytes
+Jan 20 22:54:17 rescue kernel: ata4: SATA link down (SStatus 0 SControl 300)
+Jan 20 22:54:17 rescue kernel:  sda: sda1 sda2
+Jan 20 22:54:17 rescue kernel: ata5: SATA link down (SStatus 0 SControl 300)
+Jan 20 22:54:17 rescue kernel: sd 0:0:0:0: [sda] Attached SCSI disk
+Jan 20 22:54:17 rescue kernel: ata6: SATA link down (SStatus 0 SControl 300)
+Jan 20 22:54:17 rescue kernel: ata3.00: ATAPI: QEMU DVD-ROM, 2.5+, max UDMA/100
+Jan 20 22:54:17 rescue kernel: ata3.00: applying bridge limits
+Jan 20 22:54:17 rescue kernel: ata3.00: configured for UDMA/100
+Jan 20 22:54:17 rescue kernel: scsi 2:0:0:0: CD-ROM            QEMU     QEMU DVD-ROM     2.5+ PQ: 0 ANSI: 5
+Jan 20 22:54:17 rescue kernel: e1000 0000:00:02.0 eth0: (PCI:33MHz:32-bit) 58:cf:db:8e:c6:60
+Jan 20 22:54:17 rescue kernel: e1000 0000:00:02.0 eth0: Intel(R) PRO/1000 Network Connection
+Jan 20 22:54:17 rescue kernel: e1000e: Intel(R) PRO/1000 Network Driver
+Jan 20 22:54:17 rescue kernel: e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+Jan 20 22:54:17 rescue kernel: sky2: driver version 1.30
+Jan 20 22:54:17 rescue kernel: ehci-pci 0000:00:1d.7: EHCI Host Controller
+Jan 20 22:54:17 rescue kernel: ehci-pci 0000:00:1d.7: new USB bus registered, assigned bus number 1
+Jan 20 22:54:17 rescue kernel: ehci-pci 0000:00:1d.7: irq 19, io mem 0xfebf1000
+Jan 20 22:54:17 rescue kernel: ehci-pci 0000:00:1d.7: USB 2.0 started, EHCI 1.00
+Jan 20 22:54:17 rescue kernel: usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 6.01
+Jan 20 22:54:17 rescue kernel: usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+Jan 20 22:54:17 rescue kernel: usb usb1: Product: EHCI Host Controller
+Jan 20 22:54:17 rescue kernel: usb usb1: Manufacturer: Linux 6.1.0-thor_kernel-dirty ehci_hcd
+Jan 20 22:54:17 rescue kernel: usb usb1: SerialNumber: 0000:00:1d.7
+Jan 20 22:54:17 rescue kernel: hub 1-0:1.0: USB hub found
+Jan 20 22:54:17 rescue kernel: hub 1-0:1.0: 6 ports detected
+Jan 20 22:54:17 rescue kernel: uhci_hcd 0000:00:1d.0: UHCI Host Controller
+Jan 20 22:54:17 rescue kernel: uhci_hcd 0000:00:1d.0: new USB bus registered, assigned bus number 2
+Jan 20 22:54:17 rescue kernel: uhci_hcd 0000:00:1d.0: irq 16, io port 0x0000c080
+Jan 20 22:54:17 rescue kernel: usb usb2: New USB device found, idVendor=1d6b, idProduct=0001, bcdDevice= 6.01
+Jan 20 22:54:17 rescue kernel: usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+Jan 20 22:54:17 rescue kernel: usb usb2: Product: UHCI Host Controller
+Jan 20 22:54:17 rescue kernel: usb usb2: Manufacturer: Linux 6.1.0-thor_kernel-dirty uhci_hcd
+Jan 20 22:54:17 rescue kernel: usb usb2: SerialNumber: 0000:00:1d.0
+Jan 20 22:54:17 rescue kernel: hub 2-0:1.0: USB hub found
+Jan 20 22:54:17 rescue kernel: hub 2-0:1.0: 2 ports detected
+Jan 20 22:54:17 rescue kernel: uhci_hcd 0000:00:1d.1: UHCI Host Controller
+Jan 20 22:54:17 rescue kernel: uhci_hcd 0000:00:1d.1: new USB bus registered, assigned bus number 3
+Jan 20 22:54:17 rescue kernel: uhci_hcd 0000:00:1d.1: irq 17, io port 0x0000c0a0
+Jan 20 22:54:17 rescue kernel: usb usb3: New USB device found, idVendor=1d6b, idProduct=0001, bcdDevice= 6.01
+Jan 20 22:54:17 rescue kernel: usb usb3: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+Jan 20 22:54:17 rescue kernel: usb usb3: Product: UHCI Host Controller
+Jan 20 22:54:17 rescue kernel: usb usb3: Manufacturer: Linux 6.1.0-thor_kernel-dirty uhci_hcd
+Jan 20 22:54:17 rescue kernel: usb usb3: SerialNumber: 0000:00:1d.1
+Jan 20 22:54:17 rescue kernel: sr 2:0:0:0: [sr0] scsi3-mmc drive: 4x/4x cd/rw xa/form2 tray
+Jan 20 22:54:17 rescue kernel: hub 3-0:1.0: USB hub found
+Jan 20 22:54:17 rescue kernel: cdrom: Uniform CD-ROM driver Revision: 3.20
+Jan 20 22:54:17 rescue kernel: hub 3-0:1.0: 2 ports detected
+Jan 20 22:54:17 rescue kernel: uhci_hcd 0000:00:1d.2: UHCI Host Controller
+Jan 20 22:54:17 rescue kernel: uhci_hcd 0000:00:1d.2: new USB bus registered, assigned bus number 4
+Jan 20 22:54:17 rescue kernel: uhci_hcd 0000:00:1d.2: irq 18, io port 0x0000c0c0
+Jan 20 22:54:17 rescue kernel: usb usb4: New USB device found, idVendor=1d6b, idProduct=0001, bcdDevice= 6.01
+Jan 20 22:54:17 rescue kernel: usb usb4: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+Jan 20 22:54:17 rescue kernel: usb usb4: Product: UHCI Host Controller
+Jan 20 22:54:17 rescue kernel: usb usb4: Manufacturer: Linux 6.1.0-thor_kernel-dirty uhci_hcd
+Jan 20 22:54:17 rescue kernel: usb usb4: SerialNumber: 0000:00:1d.2
+Jan 20 22:54:17 rescue kernel: hub 4-0:1.0: USB hub found
+Jan 20 22:54:17 rescue kernel: hub 4-0:1.0: 2 ports detected
+Jan 20 22:54:17 rescue kernel: usbcore: registered new interface driver usblp
+Jan 20 22:54:17 rescue kernel: usbcore: registered new interface driver usb-storage
+Jan 20 22:54:17 rescue kernel: i8042: PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+Jan 20 22:54:17 rescue kernel: serio: i8042 KBD port at 0x60,0x64 irq 1
+Jan 20 22:54:17 rescue kernel: serio: i8042 AUX port at 0x60,0x64 irq 12
+Jan 20 22:54:17 rescue kernel: rtc_cmos 00:04: RTC can wake from S4
+Jan 20 22:54:17 rescue kernel: input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input1
+Jan 20 22:54:17 rescue kernel: rtc_cmos 00:04: registered as rtc0
+Jan 20 22:54:17 rescue kernel: sr 2:0:0:0: Attached scsi CD-ROM sr0
+Jan 20 22:54:17 rescue kernel: rtc_cmos 00:04: alarms up to one day, y3k, 242 bytes nvram, hpet irqs
+Jan 20 22:54:17 rescue kernel: fail to initialize ptp_kvm
+Jan 20 22:54:17 rescue kernel: i801_smbus 0000:00:1f.3: SMBus using PCI interrupt
+Jan 20 22:54:17 rescue kernel: i2c i2c-0: 1/1 memory slots populated (from DMI)
+Jan 20 22:54:17 rescue kernel: i2c i2c-0: Memory type 0x07 not supported yet, not instantiating SPD
+Jan 20 22:54:17 rescue kernel: sr 2:0:0:0: Attached scsi generic sg1 type 5
+Jan 20 22:54:17 rescue kernel: device-mapper: ioctl: 4.47.0-ioctl (2022-07-28) initialised: dm-devel@redhat.com
+Jan 20 22:54:17 rescue kernel: intel_pstate: CPU model not supported
+Jan 20 22:54:17 rescue kernel: hid: raw HID events driver (C) Jiri Kosina
+Jan 20 22:54:17 rescue kernel: usbcore: registered new interface driver usbhid
+Jan 20 22:54:17 rescue kernel: usbhid: USB HID core driver
+Jan 20 22:54:17 rescue kernel: Initializing XFRM netlink socket
+Jan 20 22:54:17 rescue kernel: NET: Registered PF_INET6 protocol family
+Jan 20 22:54:17 rescue kernel: Segment Routing with IPv6
+Jan 20 22:54:17 rescue kernel: In-situ OAM (IOAM) with IPv6
+Jan 20 22:54:17 rescue kernel: sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+Jan 20 22:54:17 rescue kernel: NET: Registered PF_PACKET protocol family
+Jan 20 22:54:17 rescue kernel: 9pnet: Installing 9P2000 support
+Jan 20 22:54:17 rescue kernel: Key type dns_resolver registered
+Jan 20 22:54:17 rescue kernel: IPI shorthand broadcast: enabled
+Jan 20 22:54:17 rescue kernel: sched_clock: Marking stable (1072098581, -11489573)->(1202204511, -141595503)
+Jan 20 22:54:17 rescue kernel: registered taskstats version 1
+Jan 20 22:54:17 rescue kernel: Loading compiled-in X.509 certificates
+Jan 20 22:54:17 rescue kernel: cryptomgr_test (90) used greatest stack depth: 15744 bytes left
+Jan 20 22:54:17 rescue kernel: cryptomgr_test (93) used greatest stack depth: 15520 bytes left
+Jan 20 22:54:17 rescue kernel: PM:   Magic number: 7:740:938
+Jan 20 22:54:17 rescue kernel: printk: console [netcon0] enabled
+Jan 20 22:54:17 rescue kernel: netconsole: network logging started
+Jan 20 22:54:17 rescue kernel: cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Jan 20 22:54:17 rescue kernel: modprobe (112) used greatest stack depth: 13384 bytes left
+Jan 20 22:54:17 rescue kernel: cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+Jan 20 22:54:17 rescue kernel: ALSA device list:
+Jan 20 22:54:17 rescue kernel:   No soundcards found.
+Jan 20 22:54:17 rescue kernel: Freeing unused kernel image (initmem) memory: 1520K
+Jan 20 22:54:17 rescue kernel: platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+Jan 20 22:54:17 rescue kernel: cfg80211: failed to load regulatory.db
+Jan 20 22:54:17 rescue kernel: Write protecting the kernel read-only data: 24576k
+Jan 20 22:54:17 rescue kernel: Freeing unused kernel image (text/rodata gap) memory: 2032K
+Jan 20 22:54:17 rescue kernel: Freeing unused kernel image (rodata/data gap) memory: 1360K
+Jan 20 22:54:17 rescue kernel: x86/mm: Checked W+X mappings: passed, no W+X pages found.
+Jan 20 22:54:17 rescue kernel: x86/mm: Checking user space page tables
+Jan 20 22:54:17 rescue kernel: x86/mm: Checked W+X mappings: passed, no W+X pages found.
+Jan 20 22:54:17 rescue kernel: Run /init as init process
+Jan 20 22:54:17 rescue kernel:   with arguments:
+Jan 20 22:54:17 rescue kernel:     /init
+Jan 20 22:54:17 rescue kernel:   with environment:
+Jan 20 22:54:17 rescue kernel:     HOME=/
+Jan 20 22:54:17 rescue kernel:     TERM=linux
+Jan 20 22:54:17 rescue kernel: EXT4-fs (sda2): mounted filesystem with ordered data mode. Quota mode: none.
+Jan 20 22:54:17 rescue kernel: tsc: Refined TSC clocksource calibration: 3095.632 MHz
+Jan 20 22:54:17 rescue kernel: clocksource: tsc: mask: 0xffffffffffffffff max_cycles: 0x2c9f294c7e8, max_idle_ns: 440795304214 ns
+Jan 20 22:54:17 rescue kernel: clocksource: Switched to clocksource tsc
+Jan 20 22:54:17 rescue systemd[1]: systemd 252.4-2-arch running in system mode (+PAM +AUDIT -SELINUX -APPARMOR -IMA +SMACK +SECCOMP +GCRYPT +GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +IPTC +KMOD +LIBCRYPTSETUP +LIBFDISK +PCRE2 -PWQUALITY +P11KIT -QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD +BPF_FRAMEWORK +XKBCOMMON +UTMP -SYSVINIT default-hierarchy=unified)
+Jan 20 22:54:17 rescue systemd[1]: Detected virtualization qemu.
+Jan 20 22:54:17 rescue systemd[1]: Detected architecture x86-64.
+Jan 20 22:54:17 rescue systemd[1]: Hostname set to <rescue>.
+Jan 20 22:54:17 rescue systemd[1]: bpf-lsm: BPF LSM hook not enabled in the kernel, BPF LSM not supported
+Jan 20 22:54:17 rescue kernel: 10-arch (160) used greatest stack depth: 13056 bytes left
+Jan 20 22:54:17 rescue systemd-fstab-generator[167]: Mount point  is not a valid path, ignoring.
+Jan 20 22:54:17 rescue systemd-fstab-generator[167]: Mount point  is not a valid path, ignoring.
+Jan 20 22:54:17 rescue zram_generator::generator[175]: modprobe "zram" failed, ignoring: code exit status: 1
+Jan 20 22:54:17 rescue systemd[161]: /usr/lib/systemd/system-generators/zram-generator failed with exit status 1.
+Jan 20 22:54:17 rescue kernel: input: ImExPS/2 Generic Explorer Mouse as /devices/platform/i8042/serio1/input/input3
+Jan 20 22:54:17 rescue systemd[1]: Queued start job for default target Graphical Interface.
+Jan 20 22:54:17 rescue systemd[1]: Created slice Slice /system/getty.
+Jan 20 22:54:17 rescue systemd[1]: Created slice Slice /system/modprobe.
+Jan 20 22:54:17 rescue systemd[1]: Created slice Slice /system/systemd-zram-setup.
+Jan 20 22:54:17 rescue systemd[1]: Created slice User and Session Slice.
+Jan 20 22:54:17 rescue systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Jan 20 22:54:17 rescue systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+Jan 20 22:54:17 rescue systemd[1]: Set up automount Arbitrary Executable File Formats File System Automount Point.
+Jan 20 22:54:17 rescue systemd[1]: Reached target Local Encrypted Volumes.
+Jan 20 22:54:17 rescue systemd[1]: Reached target Local Integrity Protected Volumes.
+Jan 20 22:54:17 rescue systemd[1]: Reached target Path Units.
+Jan 20 22:54:17 rescue systemd[1]: Reached target Remote File Systems.
+Jan 20 22:54:17 rescue systemd[1]: Reached target Slice Units.
+Jan 20 22:54:17 rescue systemd[1]: Reached target Local Verity Protected Volumes.
+Jan 20 22:54:17 rescue systemd[1]: Listening on Device-mapper event daemon FIFOs.
+Jan 20 22:54:17 rescue systemd[1]: Listening on Process Core Dump Socket.
+Jan 20 22:54:17 rescue systemd[1]: Listening on Journal Audit Socket.
+Jan 20 22:54:17 rescue systemd[1]: Listening on Journal Socket (/dev/log).
+Jan 20 22:54:17 rescue systemd[1]: Listening on Journal Socket.
+Jan 20 22:54:17 rescue systemd[1]: Listening on Network Service Netlink Socket.
+Jan 20 22:54:17 rescue systemd[1]: Listening on udev Control Socket.
+Jan 20 22:54:17 rescue systemd[1]: Listening on udev Kernel Socket.
+Jan 20 22:54:17 rescue systemd[1]: Mounting Huge Pages File System...
+Jan 20 22:54:17 rescue systemd[1]: Mounting POSIX Message Queue File System...
+Jan 20 22:54:17 rescue systemd[1]: Mounting Kernel Debug File System...
+Jan 20 22:54:17 rescue systemd[1]: Mounting Kernel Trace File System...
+Jan 20 22:54:17 rescue systemd[1]: Create List of Static Device Nodes was skipped because of an unmet condition check (ConditionFileNotEmpty=/lib/modules/6.1.0-thor_kernel-dirty/modules.devname).
+Jan 20 22:54:17 rescue systemd[1]: Starting Load Kernel Module configfs...
+Jan 20 22:54:17 rescue systemd[1]: Starting Load Kernel Module drm...
+Jan 20 22:54:17 rescue systemd[1]: Starting Load Kernel Module fuse...
+Jan 20 22:54:17 rescue systemd[1]: Starting File System Check on Root Device...
+Jan 20 22:54:17 rescue systemd[1]: systemd-journald.service: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+Jan 20 22:54:17 rescue systemd[1]: (This warning is only shown for the first unit using IP firewalling.)
+Jan 20 22:54:17 rescue systemd[1]: Starting Journal Service...
+Jan 20 22:54:17 rescue systemd[1]: Load Kernel Modules was skipped because no trigger condition checks were met.
+Jan 20 22:54:17 rescue systemd[1]: Starting Generate network units from Kernel command line...
+Jan 20 22:54:17 rescue systemd[1]: Repartition Root Disk was skipped because no trigger condition checks were met.
+Jan 20 22:54:17 rescue systemd[1]: Starting Apply Kernel Variables...
+Jan 20 22:54:17 rescue systemd[1]: Starting Coldplug All udev Devices...
+Jan 20 22:54:17 rescue systemd[1]: Mounted Huge Pages File System.
+Jan 20 22:54:17 rescue systemd[1]: Mounted POSIX Message Queue File System.
+Jan 20 22:54:17 rescue systemd[1]: Mounted Kernel Debug File System.
+Jan 20 22:54:17 rescue systemd[1]: Mounted Kernel Trace File System.
+Jan 20 22:54:17 rescue systemd[1]: modprobe@configfs.service: Deactivated successfully.
+Jan 20 22:54:17 rescue systemd[1]: Finished Load Kernel Module configfs.
+Jan 20 22:54:17 rescue kernel: audit: type=1130 audit(1674222857.825:2): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=modprobe@configfs comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue systemd[1]: modprobe@drm.service: Deactivated successfully.
+Jan 20 22:54:17 rescue kernel: audit: type=1131 audit(1674222857.825:3): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=modprobe@configfs comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue systemd[1]: Finished Load Kernel Module drm.
+Jan 20 22:54:17 rescue kernel: audit: type=1130 audit(1674222857.836:4): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=modprobe@drm comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue systemd[1]: modprobe@fuse.service: Deactivated successfully.
+Jan 20 22:54:17 rescue kernel: audit: type=1131 audit(1674222857.836:5): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=modprobe@drm comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue systemd[1]: Finished Load Kernel Module fuse.
+Jan 20 22:54:17 rescue kernel: audit: type=1130 audit(1674222857.847:6): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=modprobe@fuse comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue systemd[1]: Finished File System Check on Root Device.
+Jan 20 22:54:17 rescue systemd-journald[186]: Journal started
+Jan 20 22:54:17 rescue systemd-journald[186]: Runtime Journal (/run/log/journal/3f7e3e71a3534daba4b03f1f4ef4ae4f) is 8.0M, max 397.7M, 389.7M free.
+Jan 20 22:54:17 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=modprobe@configfs comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue audit[1]: SERVICE_STOP pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=modprobe@configfs comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=modprobe@drm comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue audit[1]: SERVICE_STOP pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=modprobe@drm comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=modprobe@fuse comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue systemd-fsck[191]: /dev/sda2: clean, 157696/1933312 files, 2421770/7732736 blocks
+Jan 20 22:54:17 rescue audit[1]: SERVICE_STOP pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=modprobe@fuse comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue kernel: audit: type=1131 audit(1674222857.847:7): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=modprobe@fuse comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-fsck-root comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue kernel: audit: type=1130 audit(1674222857.855:8): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-fsck-root comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue systemd[1]: Started Journal Service.
+Jan 20 22:54:17 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-journald comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue systemd[1]: Finished Generate network units from Kernel command line.
+Jan 20 22:54:17 rescue kernel: audit: type=1130 audit(1674222857.862:9): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-journald comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-network-generator comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue systemd[1]: Finished Apply Kernel Variables.
+Jan 20 22:54:17 rescue kernel: audit: type=1130 audit(1674222857.867:10): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-network-generator comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-sysctl comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue systemd[1]: Finished Coldplug All udev Devices.
+Jan 20 22:54:17 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-udev-trigger comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue systemd[1]: Reached target Preparation for Network.
+Jan 20 22:54:17 rescue systemd[1]: FUSE Control File System was skipped because of an unmet condition check (ConditionPathExists=/sys/fs/fuse/connections).
+Jan 20 22:54:17 rescue systemd[1]: Kernel Configuration File System was skipped because of an unmet condition check (ConditionPathExists=/sys/kernel/config).
+Jan 20 22:54:17 rescue systemd[1]: Starting Remount Root and Kernel File Systems...
+Jan 20 22:54:17 rescue systemd[1]: Finished Remount Root and Kernel File Systems.
+Jan 20 22:54:17 rescue kernel: EXT4-fs (sda2): re-mounted. Quota mode: none.
+Jan 20 22:54:17 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-remount-fs comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue systemd[1]: First Boot Wizard was skipped because of an unmet condition check (ConditionFirstBoot=yes).
+Jan 20 22:54:17 rescue systemd[1]: Rebuild Hardware Database was skipped because of an unmet condition check (ConditionNeedsUpdate=/etc).
+Jan 20 22:54:17 rescue systemd[1]: Starting Flush Journal to Persistent Storage...
+Jan 20 22:54:17 rescue systemd[1]: Starting Load/Save Random Seed...
+Jan 20 22:54:17 rescue systemd[1]: Create System Users was skipped because no trigger condition checks were met.
+Jan 20 22:54:17 rescue systemd-journald[186]: Time spent on flushing to /var/log/journal/3f7e3e71a3534daba4b03f1f4ef4ae4f is 31.940ms for 591 entries.
+Jan 20 22:54:17 rescue systemd-journald[186]: System Journal (/var/log/journal/3f7e3e71a3534daba4b03f1f4ef4ae4f) is 208.0M, max 2.8G, 2.6G free.
+Jan 20 22:54:17 rescue systemd-journald[186]: Received client request to flush runtime journal.
+Jan 20 22:54:17 rescue kernel: journal-offline (204) used greatest stack depth: 12472 bytes left
+Jan 20 22:54:17 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-random-seed comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-tmpfiles-setup-dev comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:17 rescue systemd[1]: Starting Create Static Device Nodes in /dev...
+Jan 20 22:54:17 rescue systemd[1]: Finished Load/Save Random Seed.
+Jan 20 22:54:17 rescue systemd[1]: First Boot Complete was skipped because of an unmet condition check (ConditionFirstBoot=yes).
+Jan 20 22:54:17 rescue systemd[1]: Finished Create Static Device Nodes in /dev.
+Jan 20 22:54:17 rescue systemd[1]: Reached target Preparation for Local File Systems.
+Jan 20 22:54:17 rescue systemd[1]: Virtual Machine and Container Storage (Compatibility) was skipped because of an unmet condition check (ConditionPathExists=/var/lib/machines.raw).
+Jan 20 22:54:17 rescue systemd[1]: Starting Rule-based Manager for Device Events and Files...
+Jan 20 22:54:18 rescue systemd[1]: Finished Flush Journal to Persistent Storage.
+Jan 20 22:54:18 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-journal-flush comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:18 rescue systemd-udevd[205]: Using default interface naming scheme 'v252'.
+Jan 20 22:54:18 rescue systemd[1]: Started Rule-based Manager for Device Events and Files.
+Jan 20 22:54:18 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-udevd comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:18 rescue systemd[1]: Starting Network Configuration...
+Jan 20 22:54:18 rescue kernel: e1000 0000:00:02.0 enp0s2: renamed from eth0
+Jan 20 22:54:18 rescue systemd-networkd[210]: lo: Link UP
+Jan 20 22:54:18 rescue systemd-networkd[210]: lo: Gained carrier
+Jan 20 22:54:18 rescue systemd-networkd[210]: Enumeration completed
+Jan 20 22:54:18 rescue systemd[1]: Found device QEMU_HARDDISK primary.
+Jan 20 22:54:18 rescue systemd[1]: Started Network Configuration.
+Jan 20 22:54:18 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-networkd comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:54:18 rescue systemd[1]: Mounting /boot...
+Jan 20 22:54:18 rescue kernel: FAT-fs (sda1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+Jan 20 22:54:18 rescue systemd[1]: Mounted /boot.
+Jan 20 22:54:18 rescue systemd-networkd[210]: enp0s2: Configuring with /etc/systemd/network/10-enp0s2.network.
+Jan 20 22:54:18 rescue systemd[1]: Listening on Load/Save RF Kill Switch Status /dev/rfkill Watch.
+Jan 20 22:54:18 rescue kernel: e1000: enp0s2 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX
+Jan 20 22:54:18 rescue systemd-networkd[210]: enp0s2: Link UP
+Jan 20 22:54:18 rescue systemd-networkd[210]: enp0s2: Gained carrier
+Jan 20 22:54:18 rescue kernel: IPv6: ADDRCONF(NETDEV_CHANGE): enp0s2: link becomes ready
+Jan 20 22:54:19 rescue systemd-networkd[210]: enp0s2: DHCPv4 address 192.168.42.128/24, gateway 192.168.42.1 acquired from 192.168.42.1
+Jan 20 22:54:19 rescue systemd-networkd[210]: enp0s2: Gained IPv6LL
+Jan 20 22:55:48 rescue systemd[1]: dev-zram0.device: Job dev-zram0.device/start timed out.
+Jan 20 22:55:48 rescue systemd[1]: Timed out waiting for device /dev/zram0.
+Jan 20 22:55:48 rescue systemd[1]: Dependency failed for Compressed Swap on /dev/zram0.
+Jan 20 22:55:48 rescue systemd[1]: Dependency failed for Create swap on /dev/zram0.
+Jan 20 22:55:48 rescue systemd[1]: systemd-zram-setup@zram0.service: Job systemd-zram-setup@zram0.service/start failed with result 'dependency'.
+Jan 20 22:55:48 rescue systemd[1]: dev-zram0.swap: Job dev-zram0.swap/start failed with result 'dependency'.
+Jan 20 22:55:48 rescue systemd[1]: dev-zram0.device: Job dev-zram0.device/start failed with result 'timeout'.
+Jan 20 22:55:48 rescue systemd[1]: Reached target Swaps.
+Jan 20 22:55:51 rescue systemd[1]: Mounting Temporary Directory /tmp...
+Jan 20 22:55:51 rescue systemd[1]: Mounted Temporary Directory /tmp.
+Jan 20 22:55:51 rescue systemd[1]: Reached target Local File Systems.
+Jan 20 22:55:51 rescue systemd[1]: Rebuild Dynamic Linker Cache was skipped because no trigger condition checks were met.
+Jan 20 22:55:51 rescue systemd[1]: Set Up Additional Binary Formats was skipped because no trigger condition checks were met.
+Jan 20 22:55:51 rescue systemd[1]: Store a System Token in an EFI Variable was skipped because of an unmet condition check (ConditionPathExists=/sys/firmware/efi/efivars/LoaderFeatures-4a67b082-0a4c-41cf-b6c7-440b29bb8c4f).
+Jan 20 22:55:51 rescue systemd[1]: Commit a transient machine-id on disk was skipped because of an unmet condition check (ConditionPathIsMountPoint=/etc/machine-id).
+Jan 20 22:55:51 rescue systemd[1]: Starting Create Volatile Files and Directories...
+Jan 20 22:55:51 rescue systemd[1]: Finished Create Volatile Files and Directories.
+Jan 20 22:55:51 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-tmpfiles-setup comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:51 rescue systemd[1]: Rebuild Journal Catalog was skipped because of an unmet condition check (ConditionNeedsUpdate=/var).
+Jan 20 22:55:51 rescue systemd[1]: Starting Network Name Resolution...
+Jan 20 22:55:51 rescue systemd[1]: Starting Network Time Synchronization...
+Jan 20 22:55:51 rescue systemd[1]: Update is Completed was skipped because no trigger condition checks were met.
+Jan 20 22:55:51 rescue systemd[1]: Starting Record System Boot/Shutdown in UTMP...
+Jan 20 22:55:51 rescue kernel: kauditd_printk_skb: 8 callbacks suppressed
+Jan 20 22:55:51 rescue kernel: audit: type=1130 audit(1674222951.391:19): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-tmpfiles-setup comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:51 rescue audit[270]: SYSTEM_BOOT pid=270 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg=' comm="systemd-update-utmp" exe="/usr/lib/systemd/systemd-update-utmp" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:51 rescue systemd[1]: Finished Record System Boot/Shutdown in UTMP.
+Jan 20 22:55:51 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-update-utmp comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:51 rescue kernel: audit: type=1127 audit(1674222951.402:20): pid=270 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg=' comm="systemd-update-utmp" exe="/usr/lib/systemd/systemd-update-utmp" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:51 rescue kernel: audit: type=1130 audit(1674222951.409:21): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-update-utmp comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:51 rescue systemd[1]: Started Network Time Synchronization.
+Jan 20 22:55:51 rescue systemd-resolved[268]: Positive Trust Anchors:
+Jan 20 22:55:51 rescue systemd-resolved[268]: . IN DS 20326 8 2 e06d44b80b8f1d39a95c0b0d7c65d08458e880409bbc683457104237c7f8ec8d
+Jan 20 22:55:51 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-timesyncd comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:51 rescue systemd-resolved[268]: Negative trust anchors: home.arpa 10.in-addr.arpa 16.172.in-addr.arpa 17.172.in-addr.arpa 18.172.in-addr.arpa 19.172.in-addr.arpa 20.172.in-addr.arpa 21.172.in-addr.arpa 22.172.in-addr.arpa 23.172.in-addr.arpa 24.172.in-addr.arpa 25.172.in-addr.arpa 26.172.in-addr.arpa 27.172.in-addr.arpa 28.172.in-addr.arpa 29.172.in-addr.arpa 30.172.in-addr.arpa 31.172.in-addr.arpa 168.192.in-addr.arpa d.f.ip6.arpa corp home internal intranet lan local private test
+Jan 20 22:55:51 rescue systemd[1]: Reached target System Time Set.
+Jan 20 22:55:51 rescue kernel: audit: type=1130 audit(1674222951.462:22): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-timesyncd comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:51 rescue systemd-resolved[268]: Using system hostname 'rescue'.
+Jan 20 22:55:51 rescue systemd[1]: Started Network Name Resolution.
+Jan 20 22:55:51 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-resolved comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:51 rescue systemd[1]: Reached target Network.
+Jan 20 22:55:51 rescue systemd[1]: Reached target Host and Network Name Lookups.
+Jan 20 22:55:51 rescue systemd[1]: Reached target System Initialization.
+Jan 20 22:55:51 rescue kernel: audit: type=1130 audit(1674222951.561:23): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-resolved comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:51 rescue systemd[1]: Started Refresh existing PGP keys of archlinux-keyring regularly.
+Jan 20 22:55:51 rescue systemd[1]: Started Discard unused blocks once a week.
+Jan 20 22:55:51 rescue systemd[1]: Started Daily man-db regeneration.
+Jan 20 22:55:51 rescue systemd[1]: Started Daily verification of password and group files.
+Jan 20 22:55:51 rescue systemd[1]: Started Daily Cleanup of Temporary Directories.
+Jan 20 22:55:51 rescue systemd[1]: Reached target Timer Units.
+Jan 20 22:55:51 rescue systemd[1]: Listening on D-Bus System Message Bus Socket.
+Jan 20 22:55:51 rescue systemd[1]: Reached target Socket Units.
+Jan 20 22:55:51 rescue systemd[1]: TPM2 PCR Barrier (Initialization) was skipped because of an unmet condition check (ConditionPathExists=/sys/firmware/efi/efivars/StubPcrKernelImage-4a67b082-0a4c-41cf-b6c7-440b29bb8c4f).
+Jan 20 22:55:51 rescue systemd[1]: Reached target Basic System.
+Jan 20 22:55:52 rescue systemd[1]: Starting D-Bus System Message Bus...
+Jan 20 22:55:52 rescue systemd[1]: SSH Key Generation was skipped because no trigger condition checks were met.
+Jan 20 22:55:52 rescue systemd[1]: Started OpenSSH Daemon.
+Jan 20 22:55:52 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=sshd comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:52 rescue systemd[1]: Starting User Login Management...
+Jan 20 22:55:52 rescue kernel: audit: type=1130 audit(1674222952.664:24): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=sshd comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:52 rescue systemd[1]: TPM2 PCR Barrier (User) was skipped because of an unmet condition check (ConditionPathExists=/sys/firmware/efi/efivars/StubPcrKernelImage-4a67b082-0a4c-41cf-b6c7-440b29bb8c4f).
+Jan 20 22:55:52 rescue systemd[1]: Starting Permit User Sessions...
+Jan 20 22:55:52 rescue systemd[1]: Finished Permit User Sessions.
+Jan 20 22:55:52 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-user-sessions comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:52 rescue systemd[1]: Started D-Bus System Message Bus.
+Jan 20 22:55:52 rescue kernel: audit: type=1130 audit(1674222952.694:25): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-user-sessions comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:52 rescue sshd[273]: Server listening on 0.0.0.0 port 22.
+Jan 20 22:55:52 rescue sshd[273]: Server listening on :: port 22.
+Jan 20 22:55:52 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=dbus comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:52 rescue kernel: audit: type=1130 audit(1674222952.704:26): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=dbus comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:52 rescue systemd[1]: Started Getty on tty1.
+Jan 20 22:55:52 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=getty@tty1 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:52 rescue systemd[1]: Reached target Login Prompts.
+Jan 20 22:55:52 rescue systemd-logind[274]: Watching system buttons on /dev/input/event0 (Power Button)
+Jan 20 22:55:52 rescue systemd-logind[274]: Watching system buttons on /dev/input/event1 (AT Translated Set 2 keyboard)
+Jan 20 22:55:52 rescue kernel: audit: type=1130 audit(1674222952.721:27): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=getty@tty1 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:52 rescue systemd-logind[274]: New seat seat0.
+Jan 20 22:55:52 rescue systemd[1]: Started User Login Management.
+Jan 20 22:55:52 rescue audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-logind comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:52 rescue systemd[1]: Reached target Multi-User System.
+Jan 20 22:55:52 rescue systemd[1]: Reached target Graphical Interface.
+Jan 20 22:55:52 rescue kernel: audit: type=1130 audit(1674222952.734:28): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-logind comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Jan 20 22:55:52 rescue systemd[1]: Startup finished in 1.510s (kernel) + 1min 35.231s (userspace) = 1min 36.741s.
