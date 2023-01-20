@@ -1,0 +1,29 @@
+From: changmin jeon <cjeon@student.42seoul.kr>
+Date: Fri, 20 Jan 2023 16:36:45 +0900
+Subject: [PATCH] change default EXTRAVERSION to -thor_kernel
+
+kernel's root Makefile have a empty variable.
+which named 'EXTRAVERSION',
+causing kernel-release looks too empty.
+change default EXTRAVERSION to '-thor_kernel'
+
+Signed-off-by: changmin jeon <cjeon@student.42seoul.kr>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 997b67722292..fc567e4be2bb 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ VERSION = 6
+ PATCHLEVEL = 1
+ SUBLEVEL = 0
+-EXTRAVERSION =
++EXTRAVERSION = -thor_kernel
+ NAME = Hurr durr I'ma ninja sloth
+ 
+ # *DOCUMENTATION*
+-- 
+2.39.1
