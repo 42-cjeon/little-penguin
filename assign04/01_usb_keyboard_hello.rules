@@ -1,0 +1,4 @@
+# INTERFACE 3(hid)/*/1(keyboard)
+
+ACTION=="add", SUBSYSTEM=="usb" ENV{INTERFACE}=="3/*/1", RUN+="/usr/bin/modprobe hello"
+ACTION=="remove", SUBSYSTEM=="usb" ENV{INTERFACE}=="3/*/1", RUN+="/usr/bin/modprobe -r hello"
