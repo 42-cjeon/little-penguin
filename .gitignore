@@ -1,6 +1,14 @@
 # editor settings
 .vscode
+
 assign01/*
 !assign01/hello.c
 !assign01/Makefile
 !assign01/Kbuild
+
+assign04/*
+!assign04/hello.c
+!assign04/Makefile
+!assign04/Kbuild
+!assign04/01_usb_keyboard_hello.rules
+!assign04/proof.log
