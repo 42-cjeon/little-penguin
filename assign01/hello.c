@@ -4,13 +4,15 @@
 
 #define SUCCESS 0
 
-int __init hello_init(void) {
+int __init hello_init(void)
+{
 	pr_info("Hello world !\n");
 
 	return SUCCESS;
 }
 
-void __exit hello_exit(void) {
+void __exit hello_exit(void)
+{
 	pr_info("Cleaning up module.\n");
 }
 
