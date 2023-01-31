@@ -1,4 +1,4 @@
 all:
-	$(MAKE) -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+	$(MAKE) LLVM=1 -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 clean:
-	$(MAKE) -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+	$(MAKE) LLVM=1 -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
