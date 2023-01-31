@@ -1,32 +1,40 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 #include <linux/init.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/miscdevice.h>
 #include <linux/fs.h>
 
-#define DEVICE_NAME "fortytwo"
+#define DEVICE_NAME	"fortytwo"
+#define LOGIN		"cjeon"
+#define LOGIN_END	ARRAY_SIZE(LOGIN)
 
-#define LOGIN "cjeon"
-#define LOGIN_END ARRAY_SIZE(LOGIN)
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Changmin Jeon <cjeon@student.42seoul.kr>");
+MODULE_DESCRIPTION("simple i/o misc device");
 
-static ssize_t ft_read(struct file *, char __user *, size_t, loff_t *);
-static ssize_t ft_write(struct file *, const char __user *, size_t, loff_t *);
+static ssize_t ft_read(struct file *filp, char __user *ptr, size_t len, loff_t *off);
+static ssize_t ft_write(struct file *filp, const char __user *ptr, size_t len, loff_t *off);
 
-static struct file_operations fops = { .owner = THIS_MODULE,
-				       .read = ft_read,
-				       .write = ft_write };
+static const struct file_operations fops = {
+	.owner	=	THIS_MODULE,
+	.read	=	ft_read,
+	.write	=	ft_write
+};
 
-static struct miscdevice ft_dev = { .minor = MISC_DYNAMIC_MINOR,
-				    .name = DEVICE_NAME,
-				    .fops = &fops,
-				    .mode = 0666 };
+static struct miscdevice ft_dev = {
+	.name	=	DEVICE_NAME,
+	.minor	=	MISC_DYNAMIC_MINOR,
+	.fops	=	&fops,
+	.mode	=	0666
+};
 
-static ssize_t ft_read(struct file *filp, char __user *ptr, size_t len,
-		       loff_t *off)
+static ssize_t ft_read(struct file *filp, char __user *ptr, size_t len, loff_t *off)
 {
 	size_t read_size = len;
-	
-    if (*off == LOGIN_END) {
+
+	if (*off == LOGIN_END) {
 		*off = 0;
 		return 0;
 	}
@@ -34,15 +42,14 @@ static ssize_t ft_read(struct file *filp, char __user *ptr, size_t len,
 	if (*off + len > LOGIN_END)
 		read_size = LOGIN_END - *off;
 
-	if (copy_to_user(ptr, LOGIN, read_size))
+	if (copy_to_user(ptr, &LOGIN[*off], read_size))
 		return -EFAULT;
 
 	*off += read_size;
 	return read_size;
 }
 
-static ssize_t ft_write(struct file *filp, const char __user *ptr, size_t len,
-			loff_t *off)
+static ssize_t ft_write(struct file *filp, const char __user *ptr, size_t len, loff_t *off)
 {
 	char buf[LOGIN_END - 1];
 
@@ -70,7 +77,3 @@ static void __exit fortytwo_exit(void)
 
 module_init(fortytwo_init);
 module_exit(fortytwo_exit);
-
-MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Changmin Jeon <cjeon@student.42seoul.kr>");
-MODULE_DESCRIPTION("simple i/o misc device");
