@@ -1,9 +1,10 @@
 PWD := $(CURDIR)
 
 KMOD_ROOT = /lib/modules/$(shell uname -r)
+EXTRA_MAKE_FLAG := LLVM=1
 
 all:
-	$(MAKE) -C $(KMOD_ROOT)/build M=$(PWD) modules
+	$(MAKE) $(EXTRA_MAKE_FLAG) -C $(KMOD_ROOT)/build M=$(PWD) modules
 
 clean:
-	$(MAKE) -C $(KMOD_ROOT)/build M=$(PWD) clean
+	$(MAKE) $(EXTRA_MAKE_FLAG) -C $(KMOD_ROOT)/build M=$(PWD) clean

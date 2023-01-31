@@ -4,161 +4,168 @@
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/seq_file.h>
+#include <linux/nsproxy.h>
 #include <linux/fs_struct.h>
+#include <linux/dcache.h>
+#include <linux/seq_file.h>
+#include <linux/proc_fs.h>
+
+#include <../fs/mount.h>
+
+#define NODE_NAME "mymounts"
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Changmin Jeon <cjeon@student.42seoul.kr>");
-MODULE_DESCRIPTION("simple device which reverses given string.");
+MODULE_DESCRIPTION("show all mount points");
 
-int __init init_mod(void)
+/*
+void * (*start) (struct seq_file *m, loff_t *pos);
+	void (*stop) (struct seq_file *m, void *v);
+	void * (*next) (struct seq_file *m, void *v, loff_t *pos);
+	int (*show) (struct seq_file *m, void *v);
+
+*/
+
+static void *mymount_seq_start(struct seq_file *m, loff_t *pos) {
+	struct list_head *head = m->private;
+
+	return seq_list_start_head(head, *pos + 1);
+}
+
+static void *mymount_seq_next(struct seq_file *m, void *v, loff_t *pos) {
+	struct list_head *head = m->private;
+	pr_info("seq_next. pos=%ld\n", *pos);
+
+	struct list_head *cur = seq_list_next(v, head, pos);
+	pr_info("seq_next. end cur=[%p]\n", cur);
+	
+	return cur;
+}
+
+// unlock rcus?
+void mymount_seq_stop(struct seq_file *m, void *v)
 {
-	struct fs_struct *fs = current->fs;
-	struct path *root = &fs->root;
-	struct vfsmount *mnt = root->mnt;
-	struct super_block *sb = mnt->mnt_sb;
-	struct super_block *cur;
+}
 
-	list_for_each_entry(cur, &sb->s_list, s_list) {
-		const char *name = cur->s_root->d_name.name;
-		pr_info("entry: [%s]\n", name);
+static int mymount_seq_show(struct seq_file *m, void *v) {
+	struct mount *rmnt = container_of(v, struct mount, mnt_list);
+
+	pr_info("rmnt addr == %p\n", rmnt);
+	pr_info("rmnt devname p == %p\n", rmnt->mnt_devname);
+	pr_info("rmnt devname n == %s\n", rmnt->mnt_devname ? rmnt->mnt_devname : "unknown");
+
+	struct vfsmount *vmnt = &rmnt->mnt;
+	struct super_block *sb = vmnt->mnt_sb;
+	const struct path mnt_path = {
+		.mnt = vmnt,
+		.dentry = vmnt->mnt_root,
+	};
+	int ret;
+
+	if (sb->s_op->show_devname) {
+		ret = sb->s_op->show_devname(m, vmnt->mnt_root);
+		if (ret)
+			return ret;
+	} else {
+		seq_puts(m, rmnt->mnt_devname ? rmnt->mnt_devname : "unknown");
 	}
+	seq_putc(m, ' ');
+
+	char buf[1<<10];
+	char *bufp = d_path(&mnt_path, buf, ARRAY_SIZE(buf));
+	seq_puts(m, bufp ? bufp : "unknown");
+
+	// ret = seq_path(m, &mnt_path, " \t\n\\");
+	
+	seq_putc(m, '\n');
+
 	return 0;
 }
 
-void __exit exit_mod(void)
+static struct seq_operations mymount_sops = {
+	.start = mymount_seq_start,
+	.next = mymount_seq_next,
+	.show = mymount_seq_show,
+	.stop = mymount_seq_stop,
+};
+
+// int (*open) (struct inode *, struct file *);
+// ssize_t (*read) (struct file *, char __user *, size_t, loff_t *);
+// loff_t (*llseek) (struct file *, loff_t, int);
+// int (*release) (struct inode *, struct file *);
+
+static int mymount_file_open(struct inode *inode, struct file *filp) {
+	pr_info("open mymount...\n");
+
+	struct nsproxy *nsp = current->nsproxy;
+	struct mnt_namespace *mnt_ns = nsp->mnt_ns;
+	struct seq_file *seq;
+	int ret;
+
+	ret = seq_open(filp, &mymount_sops);
+	if (ret)
+		return ret;
+
+	seq = filp->private_data;
+	seq->private = &mnt_ns->list;
+
+	pr_info("open mymount...end\n");
+	return 0;
+}
+
+// static int mymount_file_release(struct inode *inode, struct file *filp) {
+// 	pr_info("release mymount...\n");
+// 	int ret = seq_release_private(inode, filp);
+
+// 	pr_info("release mymount...end ret=[%d]\n", ret);
+// 	return ret;
+// }
+
+static const struct proc_ops mymount_fops = {
+	.proc_open	= mymount_file_open,
+        .proc_read	= seq_read,
+        .proc_lseek	= seq_lseek,
+        .proc_release	= seq_release,
+};
+
+static int __init init_mod(void)
 {
+	static struct proc_dir_entry *entry;
+        
+	entry = proc_create(NODE_NAME, 0, NULL, &mymount_fops);
+	if (entry == NULL) {
+		remove_proc_entry(NODE_NAME, NULL);
+		return -ENOMEM;
+	}
+        return 0;
+}
+
+static void __exit exit_mod(void)
+{
+	remove_proc_entry(NODE_NAME, NULL);
 }
 
 module_init(init_mod);
 module_exit(exit_mod);
 
-// static DEFINE_MUTEX(namespace_lock);
-
-// struct proc_mymounts {
-// 	struct mnt_namespace *ns;
-// 	struct path root;
-// 	struct mount cursor;
-// };
-
-// static struct mount *mnt_list_next(struct mnt_namespace *ns,
-// 				   struct list_head *p)
-// {
-// 	struct mount *mnt, *ret = NULL;
-
-// 	spin_lock(&ns->ns_lock);
-// 	spin_lock(&ns->ns_lock);
-// 	list_for_each_continue(p, &ns->list) {
-// 		mnt = list_entry(p, typeof(*mnt), mnt_list);
-// 		if (!mnt_is_cursor(mnt)) {
-// 			ret = mnt;
-// 			break;
-// 		}
-// 	}
-// 	unlock_ns_list(ns);
-
-// 	return ret;
-// }
-
-// void *mymount_seq_start(struct seq_file *seq, loff_t *off) {
-// 	struct proc_mymounts *p = seq->private;
-// 	struct list_head *prev;
+	// very very very danger code.
+	// struct nsproxy *nsp = current->nsproxy;
+	// struct mnt_namespace *mnt_ns = nsp->mnt_ns;
 	
-// 	mutex_lock(&namespace_lock);
+	// struct mount *head = container_of(&mnt_ns->list, struct mount, mnt_list);
 
-// 	if (*off == 0) {
-// 		prev = &p->ns->list;
-// 	} else {
-// 		prev = &p->cursor.mnt_list;
+	// struct mount *curr;
 
-// 		if (list_empty(prev))
-// 			return NULL;
-// 	}
+	// struct path p;
 
-// 	return mnt_list_next();
-// }
-// // mymount_seq_next
-// // mymount_seq_stop
-// // mymount_seq_show
+	// char buf[1<<10];
+	// list_for_each_entry(curr, &head->mnt_list, mnt_list) {
+	// 	pr_info("mnt_info\n");
+	// 	pr_info("  - devname   : %s\n", curr->mnt_devname ? curr->mnt_devname : "unknown");
+		
+	// 	p.dentry = curr->mnt.mnt_root;
+	// 	p.mnt = &curr->mnt;
 
-// const struct seq_operations mymount_sops = {
-// 	.start =
-// 	.next
-// 	.stop
-// 	.show
-// };
-
-// static int mymount_open(struct inode *inode, struct file *filp)
-// {
-// 	struct task_struct *task = get_proc_task(inode);
-// 	struct nsproxy *nsp;
-// 	struct mnt_namespace *ns = NULL;
-// 	struct path root;
-// 	struct proc_mymounts *p;
-// 	struct seq_file *m;
-// 	int ret;
-
-// 	if (!task)
-// 		return -EINVAL;
-	
-// 	task_lock(task);
-// 	nsp = task->nsproxy;
-// 	if (!nsp || !nsp->mnt_ns) {
-// 		ret = -EINVAL;
-// 		goto out_put_task;
-// 	}
-// 	ns = nsp->mnt_ns;
-// 	get_mnt_ns(ns);
-
-// 	if (!task->fs) {
-// 		ret = -ENOENT;
-// 		goto err_put_ns;
-// 	}
-// 	get_fs_root(task->fs, &root);
-
-// 	p = __seq_open_private(filp, &mymount_sops, sizeof(struct proc_mymounts));
-// 	if (!p) {
-// 		ret = -ENOMEM;
-// 		goto err_put_path;
-// 	}
-
-// 	p->ns = ns;
-// 	p->root = root;
-// 	INIT_LIST_HEAD(&p->cursor.mnt_list);
-// 	p->cursor.mnt.mnt_flags = MNT_CURSOR;
-// 	ret = 0;
-
-// 	goto out_put_task;
-
-// err_put_path:
-// 	path_put(&root);
-
-// err_put_ns:
-// 	put_mnt_ns(ns);
-	
-// out_put_task:
-// 	task_unlock(task);
-// 	put_task_struct(task);
-
-// 	return ret;
-// }
-
-// static int mymount_release(struct inode *inode, struct file *filp) {
-
-// 	struct seq_file *m = filp->private_data;
-// 	struct proc_mymounts *p = m->private;
-
-// 	path_put(&p->root);
-// 	mnt_cursor_del(p->ns, &p->cursor);
-// 	put_mnt_ns(p->ns);
-
-// 	// release filp->private_data->private
-// 	return seq_release_private(inode, filp);
-// }
-
-// const struct file_operations mymount_fops = {
-// 	.owner		= THIS_MODULE,
-// 	.open		= mymount_open,
-// 	.read_iter	= seq_read_iter,
-// 	.llseek		= seq_lseek,
-// 	.release	= mymount_release,
-// };
+	// 	char *bufp = d_path(&p, buf, ARRAY_SIZE(buf));
+	// 	pr_info("  - mounted on: %s\n", bufp ? bufp : "unknown");
+	// }
