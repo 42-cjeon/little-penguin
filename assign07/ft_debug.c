@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 #include <linux/init.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
@@ -6,10 +8,12 @@
 #include <linux/jiffies.h>
 #include <linux/mutex.h>
 
-#define ENTRY_NAME "fortytwo"
+#define ENTRY_NAME	"fortytwo"
+#define LOGIN		"cjeon"
+#define LOGIN_END	ARRAY_SIZE(LOGIN)
 
-#define LOGIN "cjeon"
-#define LOGIN_END ARRAY_SIZE(LOGIN)
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Changmin Jeon <cjeon@student.42seoul.kr>");
 
 static ssize_t ft_read(struct file *filp, char __user *ptr, size_t len,
 		       loff_t *off)
@@ -24,7 +28,7 @@ static ssize_t ft_read(struct file *filp, char __user *ptr, size_t len,
 	if (*off + len > LOGIN_END)
 		read_size = LOGIN_END - *off;
 
-	if (copy_to_user(ptr, LOGIN + *off, read_size))
+	if (copy_to_user(ptr, &LOGIN[*off], read_size))
 		return -EFAULT;
 
 	*off += read_size;
@@ -65,10 +69,10 @@ static ssize_t jiffies_read(struct file *filp, char __user *ptr, size_t len,
 		       loff_t *off)
 {
 	const struct jiffies_buffer *buffer;
-	ssize_t read_size;
+	ssize_t read_size = len;
 
 	buffer = filp->private_data;
-    if (*off == buffer->end) {
+	if (*off == buffer->end) {
 		*off = 0;
 		return 0;
 	}
@@ -118,7 +122,7 @@ static int jiffies_open(struct inode *inode, struct file *filp)
 
 	buffer = kmalloc(sizeof(*buffer), GFP_KERNEL);
 	if (buffer == NULL)
-		return -EFAULT;
+		return -ENOMEM;
 
 	jiffies_to_buf(buffer);
 	filp->private_data = buffer;
@@ -157,26 +161,18 @@ static DEFINE_MUTEX(foo_lock);
 static int foo_open(struct inode *inode, struct file *filp)
 {
 	mutex_lock(&foo_lock);
+
 	filp->private_data = (void *)foo_buffer_id;
 
 	if (filp->f_mode & FMODE_WRITE) {		
-		if (filp->f_flags & O_TRUNC)
-			goto trunc_buffer;
-		
-		if (filp->f_flags & O_APPEND)
-			goto manage_buffer_end;
+		if (filp->f_flags & O_TRUNC) {
+			foo_buffer_len = 0;
+			foo_buffer_id++;	
+		}
 
-		goto move_cursor_to_zero;
-
-		trunc_buffer:
-		foo_buffer_len = 0;
-		foo_buffer_id++;	
-		
-		move_cursor_to_zero:
 		foo_buffer_cur = 0;
-
-		manage_buffer_end:
 	}
+
 	mutex_unlock(&foo_lock);
 
 	return 0;
@@ -312,6 +308,3 @@ static void __exit ft_debug_exit(void)
 
 module_init(ft_debug_init);
 module_exit(ft_debug_exit);
-
-MODULE_LICENSE("GPL v2");
-MODULE_AUTHOR("Changmin Jeon <cjeon@student.42seoul.kr>");

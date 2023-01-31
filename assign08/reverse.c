@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-2.0
+// SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <linux/module.h>
 #include <linux/kernel.h>
@@ -7,11 +7,9 @@
 #include <linux/fs.h>
 #include <linux/slab.h>
 
-MODULE_LICENSE("GPL v2");
-
+MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Louis Solofrizzo <louis@ne02ptzero.me>");
 MODULE_AUTHOR("Changmin Jeon <cjeon@student.42seoul.kr>");
-
 MODULE_DESCRIPTION("simple device which reverses given string.");
 
 static ssize_t reverse_read(struct file *filp, char __user *ptr,
