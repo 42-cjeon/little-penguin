@@ -1,6 +1,12 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 #include <linux/init.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Changmin Jeon <cjeon@student.42seoul.kr>");
+MODULE_DESCRIPTION("simple `hello, world` module.");
 
 #define SUCCESS 0
 
@@ -18,7 +24,3 @@ void __exit hello_exit(void)
 
 module_init(hello_init);
 module_exit(hello_exit);
-
-MODULE_LICENSE("GPL");
-MODULE_AUTHOR("cjeon@student.42seoul.kr");
-MODULE_DESCRIPTION("simple `hello, world` module.");
