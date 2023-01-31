@@ -1,9 +1,11 @@
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/delay.h>
 #include <linux/slab.h>
+
+MODULE_LICENSE("GPL");
 
 /*
  * sleep `useconds`us `count` times.
@@ -12,7 +14,7 @@
  */
 static u64 long_sleep(u32 count, u32 useconds)
 {
-    u64 total_sleep = count * useconds;
+	u64 total_sleep = count * useconds;
 
 	for (u32 i = 0; i < count; i++)
 		udelay(useconds);
@@ -27,7 +29,7 @@ static int __init my_init(void)
 {
 	u64 x = long_sleep(10, 100);
 
-    pr_info("slept %lldus\n", x);
+	pr_info("slept %lldus\n", x);
 
 	return 0;
 }
