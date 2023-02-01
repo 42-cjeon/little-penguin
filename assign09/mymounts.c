@@ -9,6 +9,7 @@
 #include <linux/dcache.h>
 #include <linux/seq_file.h>
 #include <linux/proc_fs.h>
+#include <linux/kprobes.h>
 
 #include <../fs/mount.h>
 
@@ -18,42 +19,66 @@ MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Changmin Jeon <cjeon@student.42seoul.kr>");
 MODULE_DESCRIPTION("show all mount points");
 
-/*
-void * (*start) (struct seq_file *m, loff_t *pos);
-	void (*stop) (struct seq_file *m, void *v);
-	void * (*next) (struct seq_file *m, void *v, loff_t *pos);
-	int (*show) (struct seq_file *m, void *v);
+int (*p_seq_path_root)(struct seq_file *m, const struct path *path,
+		  const struct path *root, const char *esc);
 
-*/
+struct list_head *mount_list_next_n(struct list_head *head, loff_t pos) {
+	struct mount *curr;
 
-static void *mymount_seq_start(struct seq_file *m, loff_t *pos) {
-	struct list_head *head = m->private;
+	list_for_each_entry(curr, head, mnt_list) {
+		if (curr->mnt.mnt_flags & MNT_CURSOR)
+			continue;
+		if (pos == 0)
+			return &curr->mnt_list;
+		--pos;
+	}
 
-	return seq_list_start_head(head, *pos + 1);
+	return NULL;
 }
 
-static void *mymount_seq_next(struct seq_file *m, void *v, loff_t *pos) {
-	struct list_head *head = m->private;
-	pr_info("seq_next. pos=%ld\n", *pos);
+struct list_head *mount_list_next(struct list_head *head, struct list_head *curr, loff_t *pos) {
+	struct mount *rmnt;
 
-	struct list_head *cur = seq_list_next(v, head, pos);
-	pr_info("seq_next. end cur=[%p]\n", cur);
-	
-	return cur;
+	*pos += 1;
+
+	list_for_each_continue(curr, head) {
+		rmnt = container_of(curr, struct mount, mnt_list);
+		if (rmnt->mnt.mnt_flags & MNT_CURSOR)
+			continue;
+		return &rmnt->mnt_list;
+	}
+
+	return NULL;
 }
 
-// unlock rcus?
+struct proc_mymounts {
+	struct path *root;
+	struct list_head *head;
+};
+
+static void *mymount_seq_start(struct seq_file *m, loff_t *pos)
+{
+	struct proc_mymounts *mymnt = m->private;
+
+	return mount_list_next_n(mymnt->head, *pos);
+}
+
+static void *mymount_seq_next(struct seq_file *m, void *v, loff_t *pos)
+{
+	struct proc_mymounts *mymnt = m->private;
+	struct list_head *curr = v;
+
+	return mount_list_next(mymnt->head, curr, pos);
+}
+
 void mymount_seq_stop(struct seq_file *m, void *v)
 {
 }
 
-static int mymount_seq_show(struct seq_file *m, void *v) {
+static int mymount_seq_show(struct seq_file *m, void *v)
+{
+	struct proc_mymounts *mymnt = m->private;
 	struct mount *rmnt = container_of(v, struct mount, mnt_list);
-
-	pr_info("rmnt addr == %p\n", rmnt);
-	pr_info("rmnt devname p == %p\n", rmnt->mnt_devname);
-	pr_info("rmnt devname n == %s\n", rmnt->mnt_devname ? rmnt->mnt_devname : "unknown");
-
 	struct vfsmount *vmnt = &rmnt->mnt;
 	struct super_block *sb = vmnt->mnt_sb;
 	const struct path mnt_path = {
@@ -69,14 +94,17 @@ static int mymount_seq_show(struct seq_file *m, void *v) {
 	} else {
 		seq_puts(m, rmnt->mnt_devname ? rmnt->mnt_devname : "unknown");
 	}
+
 	seq_putc(m, ' ');
 
-	char buf[1<<10];
-	char *bufp = d_path(&mnt_path, buf, ARRAY_SIZE(buf));
-	seq_puts(m, bufp ? bufp : "unknown");
+	ret = p_seq_path_root(m, &mnt_path, mymnt->root, " \t\n\\");
+	if (ret)
+		return ret;
 
-	// ret = seq_path(m, &mnt_path, " \t\n\\");
-	
+	seq_putc(m, ' ');
+
+	// pr_alert("MNT_CURSOR=%s\n", (vmnt->mnt_flags & MNT_CURSOR) ? "true" : "false");
+
 	seq_putc(m, '\n');
 
 	return 0;
@@ -89,27 +117,22 @@ static struct seq_operations mymount_sops = {
 	.stop = mymount_seq_stop,
 };
 
-// int (*open) (struct inode *, struct file *);
-// ssize_t (*read) (struct file *, char __user *, size_t, loff_t *);
-// loff_t (*llseek) (struct file *, loff_t, int);
-// int (*release) (struct inode *, struct file *);
+static int mymount_file_open(struct inode *inode, struct file *filp)
+{
+	struct nsproxy *nsp;
+	struct mnt_namespace *mnt_ns;
+	struct proc_mymounts *mymounts;
 
-static int mymount_file_open(struct inode *inode, struct file *filp) {
-	pr_info("open mymount...\n");
+	nsp = current->nsproxy;
+	mnt_ns = nsp->mnt_ns;
 
-	struct nsproxy *nsp = current->nsproxy;
-	struct mnt_namespace *mnt_ns = nsp->mnt_ns;
-	struct seq_file *seq;
-	int ret;
+	mymounts = __seq_open_private(filp, &mymount_sops, sizeof(*mymounts));
+	if (mymounts == NULL)
+		return -ENOMEM;
 
-	ret = seq_open(filp, &mymount_sops);
-	if (ret)
-		return ret;
+	mymounts->head = &mnt_ns->list;
+	mymounts->root = &current->fs->root;
 
-	seq = filp->private_data;
-	seq->private = &mnt_ns->list;
-
-	pr_info("open mymount...end\n");
 	return 0;
 }
 
@@ -122,22 +145,32 @@ static int mymount_file_open(struct inode *inode, struct file *filp) {
 // }
 
 static const struct proc_ops mymount_fops = {
-	.proc_open	= mymount_file_open,
-        .proc_read	= seq_read,
-        .proc_lseek	= seq_lseek,
-        .proc_release	= seq_release,
+	.proc_open = mymount_file_open,
+	.proc_read = seq_read,
+	.proc_lseek = seq_lseek,
+	.proc_release = seq_release_private,
 };
 
 static int __init init_mod(void)
 {
 	static struct proc_dir_entry *entry;
-        
+	struct kprobe kp = {
+		.symbol_name = "seq_path_root"
+	};
+	int err;
+
+	err = register_kprobe(&kp);
+	if (err)
+		return err;
+	p_seq_path_root = (typeof(p_seq_path_root))kp.addr;
+	unregister_kprobe(&kp);
+
 	entry = proc_create(NODE_NAME, 0, NULL, &mymount_fops);
 	if (entry == NULL) {
 		remove_proc_entry(NODE_NAME, NULL);
 		return -ENOMEM;
 	}
-        return 0;
+	return 0;
 }
 
 static void __exit exit_mod(void)
@@ -147,25 +180,3 @@ static void __exit exit_mod(void)
 
 module_init(init_mod);
 module_exit(exit_mod);
-
-	// very very very danger code.
-	// struct nsproxy *nsp = current->nsproxy;
-	// struct mnt_namespace *mnt_ns = nsp->mnt_ns;
-	
-	// struct mount *head = container_of(&mnt_ns->list, struct mount, mnt_list);
-
-	// struct mount *curr;
-
-	// struct path p;
-
-	// char buf[1<<10];
-	// list_for_each_entry(curr, &head->mnt_list, mnt_list) {
-	// 	pr_info("mnt_info\n");
-	// 	pr_info("  - devname   : %s\n", curr->mnt_devname ? curr->mnt_devname : "unknown");
-		
-	// 	p.dentry = curr->mnt.mnt_root;
-	// 	p.mnt = &curr->mnt;
-
-	// 	char *bufp = d_path(&p, buf, ARRAY_SIZE(buf));
-	// 	pr_info("  - mounted on: %s\n", bufp ? bufp : "unknown");
-	// }
