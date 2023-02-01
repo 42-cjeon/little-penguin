@@ -8,14 +8,32 @@
 
 #define DEVICE_NAME	"fortytwo"
 #define LOGIN		"cjeon"
-#define LOGIN_END	ARRAY_SIZE(LOGIN)
+#define LOGIN_LEN	(ARRAY_SIZE(LOGIN) - 1)
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Changmin Jeon <cjeon@student.42seoul.kr>");
 MODULE_DESCRIPTION("simple i/o misc device");
 
-static ssize_t ft_read(struct file *filp, char __user *ptr, size_t len, loff_t *off);
-static ssize_t ft_write(struct file *filp, const char __user *ptr, size_t len, loff_t *off);
+static ssize_t ft_read(struct file *filp, char __user *ptr, size_t len, loff_t *off)
+{
+	return simple_read_from_buffer(ptr, len, off, LOGIN, LOGIN_LEN);
+}
+
+static ssize_t ft_write(struct file *filp, const char __user *ptr, size_t len, loff_t *off)
+{
+	char buf[LOGIN_LEN];
+
+	if (len != LOGIN_LEN)
+		return -EINVAL;
+
+	if (copy_from_user(buf, ptr, len))
+		return -EFAULT;
+
+	if (memcmp(buf, LOGIN, LOGIN_LEN))
+		return -EINVAL;
+
+	return len;
+}
 
 static const struct file_operations fops = {
 	.owner	=	THIS_MODULE,
@@ -29,41 +47,6 @@ static struct miscdevice ft_dev = {
 	.fops	=	&fops,
 	.mode	=	0666
 };
-
-static ssize_t ft_read(struct file *filp, char __user *ptr, size_t len, loff_t *off)
-{
-	size_t read_size = len;
-
-	if (*off == LOGIN_END) {
-		*off = 0;
-		return 0;
-	}
-
-	if (*off + len > LOGIN_END)
-		read_size = LOGIN_END - *off;
-
-	if (copy_to_user(ptr, &LOGIN[*off], read_size))
-		return -EFAULT;
-
-	*off += read_size;
-	return read_size;
-}
-
-static ssize_t ft_write(struct file *filp, const char __user *ptr, size_t len, loff_t *off)
-{
-	char buf[LOGIN_END - 1];
-
-	if (len != LOGIN_END - 1)
-		return -EINVAL;
-
-	if (copy_from_user(buf, ptr, len))
-		return -EFAULT;
-
-	if (strncmp(buf, LOGIN, LOGIN_END - 1))
-		return -EINVAL;
-
-	return len;
-}
 
 static int __init fortytwo_init(void)
 {
