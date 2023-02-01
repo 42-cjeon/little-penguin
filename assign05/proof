@@ -1,0 +1,9 @@
+cjeon@rescue assign05 [0] % cat /dev/fortytwo 
+cjeon%                                                                
+cjeon@rescue assign05 [0] % echo -n 'a' > /dev/fortytwo
+echo: write error: invalid argument
+cjeon@rescue assign05 [1] % echo -n 'ab' > /dev/fortytwo
+echo: write error: invalid argument
+cjeon@rescue assign05 [1] % echo -n 'cjeon' > /dev/fortytwo
+cjeon@rescue assign05 [0] % echo -n 'cjeon1' > /dev/fortytwo
+echo: write error: invalid argument
