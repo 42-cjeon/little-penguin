@@ -79,7 +79,7 @@ ssize_t reverse_read(struct file *filp, char __user *ptr,
 	mutex_lock(&write_buf_lock);
 
 	buf = kmalloc_array(write_buf_cur, sizeof(*buf), GFP_KERNEL);
-	if (buf == NULL) {
+	if (!buf) {
 		ret = -ENOMEM;
 		goto release_mutex;
 	}
